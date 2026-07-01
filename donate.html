@@ -19,13 +19,13 @@
   </script>
   <style>
     :root {
-      --primary: #1a5f7a;
-      --secondary: #22a6b3;
-      --accent: #27ae60;
-      --danger: #ef7c6a;
+      --primary: #2563eb;
+      --secondary: #f97316;
+      --accent: #dc2626;
+      --danger: #dc2626;
       --text: #0f172a;
       --muted: #64748b;
-      --line: rgba(15,23,42,0.08);
+      --line: rgba(15,23,42,0.06);
       --surface: rgba(255, 255, 255, 0.92);
       --container: 1200px;
       --radius: 18px;
@@ -39,7 +39,7 @@
       line-height: 1.7;
       color: var(--text);
       background:
-        radial-gradient(circle at top center, rgba(34,166,179,0.08), transparent 20%),
+        radial-gradient(circle at top center, rgba(37,99,235,0.08), transparent 20%),
         linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     }
     a { color: inherit; text-decoration: none; }
@@ -74,7 +74,7 @@
       display: grid;
       place-items: center;
       border-radius: 12px;
-      border: 1px solid rgba(15,23,42,0.08);
+      border: 1px solid rgba(15,23,42,0.06);
       background: rgba(15,23,42,0.05);
     }
     .nav { display: none; justify-self: center; gap: 28px; }
@@ -93,8 +93,8 @@
       font-weight: 600;
     }
     .button--accent {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: var(--primary);
+      border-color: var(--primary);
       color: #ffffff;
     }
     .hero {
@@ -176,14 +176,14 @@
     }
     .choice {
       min-height: 52px;
-      border: 1px solid rgba(15,23,42,0.12);
+      border: 1px solid rgba(15,23,42,0.1);
       border-radius: var(--radius-sm);
       background: rgba(255,255,255,0.92);
       color: var(--text);
     }
     .choice.is-selected {
       border-color: var(--accent);
-      background: rgba(39,174,96,0.12);
+      background: rgba(249,115,22,0.12);
     }
     .form-grid {
       display: grid;
@@ -200,7 +200,7 @@
       min-height: 54px;
       width: 100%;
       padding: 0 16px;
-      border: 1px solid rgba(15,23,42,0.12);
+      border: 1px solid rgba(15,23,42,0.1);
       border-radius: var(--radius-sm);
       background: rgba(255,255,255,0.92);
       color: var(--text);
@@ -248,7 +248,7 @@
     .site-footer {
       padding: 56px 0 34px;
       background: #0f1117;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
     .footer__column h4 {
       margin: 0;
@@ -266,7 +266,7 @@
     .footer__base {
       margin-top: 24px;
       padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.05);
       color: var(--muted);
       font-size: 0.92rem;
     }

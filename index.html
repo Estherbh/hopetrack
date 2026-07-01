@@ -19,10 +19,10 @@
   </script>
   <style>
     :root {
-      --primary: #1a5f7a;
-      --secondary: #22a6b3;
-      --accent: #27ae60;
-      --accent-dark: #1f8a4c;
+      --primary: #2563eb;
+      --secondary: #f97316;
+      --accent: #dc2626;
+      --accent-dark: #b91c1c;
       --bg: #f8fafc;
       --bg-soft: #ffffff;
       --surface: rgba(255, 255, 255, 0.9);
@@ -30,8 +30,8 @@
       --surface-muted: #eef2f7;
       --text: #0f172a;
       --muted: #64748b;
-      --line: rgba(15, 23, 42, 0.08);
-      --line-strong: rgba(15, 23, 42, 0.14);
+      --line: rgba(15, 23, 42, 0.06);
+      --line-strong: rgba(15, 23, 42, 0.1);
       --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
       --radius-sm: 10px;
       --radius-md: 14px;
@@ -59,8 +59,8 @@
       line-height: 1.7;
       color: var(--text);
       background:
-        radial-gradient(circle at top center, rgba(34, 166, 179, 0.1), transparent 20%),
-        radial-gradient(circle at 20% 12%, rgba(26, 95, 122, 0.08), transparent 24%),
+        radial-gradient(circle at top center, rgba(37, 99, 235, 0.1), transparent 20%),
+        radial-gradient(circle at 20% 12%, rgba(249, 115, 22, 0.08), transparent 24%),
         linear-gradient(180deg, #ffffff 0%, #f8fafc 48%, #f5f7fb 100%);
     }
 
@@ -76,7 +76,7 @@
     a:focus-visible,
     button:focus-visible,
     input:focus-visible {
-      outline: 3px solid rgba(39, 174, 96, 0.35);
+      outline: 3px solid rgba(249, 115, 22, 0.28);
       outline-offset: 3px;
     }
 
@@ -150,7 +150,7 @@
       display: grid;
       place-items: center;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(15, 23, 42, 0.08);
       background: rgba(255, 255, 255, 0.05);
       font-size: 0.92rem;
     }
@@ -454,7 +454,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      color: #93e8c2;
+      color: var(--accent);
       font-size: 0.86rem;
       font-weight: 600;
     }
@@ -492,7 +492,7 @@
     .bars span {
       flex: 1;
       border-radius: 12px 12px 6px 6px;
-      background: linear-gradient(180deg, rgba(34, 166, 179, 0.95), rgba(26, 95, 122, 0.55));
+      background: linear-gradient(180deg, rgba(249, 115, 22, 0.95), rgba(37, 99, 235, 0.55));
     }
 
     .bars span:nth-child(1) { height: 44%; }
@@ -541,8 +541,8 @@
     }
 
     .proof {
-      border-top: 1px solid rgba(15,23,42,0.08);
-      border-bottom: 1px solid rgba(15,23,42,0.08);
+      border-top: 1px solid rgba(15,23,42,0.05);
+      border-bottom: 1px solid rgba(15,23,42,0.05);
       background: rgba(255, 255, 255, 0.84);
       overflow: hidden;
     }
@@ -564,7 +564,7 @@
 
     .marquee__item {
       padding: 12px 18px;
-      border: 1px solid rgba(15, 23, 42, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.06);
       border-radius: 999px;
       background: #ffffff;
       color: #0f172a;
@@ -628,8 +628,8 @@
       display: grid;
       place-items: center;
       border-radius: 14px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.1);
       font-weight: 700;
       margin-bottom: 18px;
     }
@@ -662,7 +662,7 @@
     }
 
     .feature__eyebrow {
-      color: #bde5ff;
+      color: #2563eb;
       font-size: 0.86rem;
       font-weight: 700;
       letter-spacing: 0.06em;
@@ -678,10 +678,10 @@
 
     .feature__meta span {
       padding: 8px 12px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.08);
       border-radius: 999px;
       font-size: 0.84rem;
-      color: #dbe3ef;
+      color: #475569;
     }
 
     .feature__visual {
@@ -690,13 +690,13 @@
       padding: 24px;
       border-top: 1px solid var(--line);
       background:
-        radial-gradient(circle at 20% 20%, rgba(34, 166, 179, 0.14), transparent 28%),
+        radial-gradient(circle at 20% 20%, rgba(37, 99, 235, 0.14), transparent 28%),
         linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
     }
 
     .visual-card {
       position: absolute;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 18px;
       background: rgba(15, 23, 42, 0.96);
       box-shadow: 0 24px 48px rgba(15, 23, 42, 0.18);
@@ -735,7 +735,7 @@
     .visual-bars span {
       flex: 1;
       border-radius: 10px 10px 4px 4px;
-      background: linear-gradient(180deg, rgba(39,174,96,0.95), rgba(34,166,179,0.5));
+      background: linear-gradient(180deg, rgba(220,38,38,0.95), rgba(249,115,22,0.5));
     }
 
     .visual-bars span:nth-child(1) { height: 38%; }
@@ -760,7 +760,7 @@
       display: block;
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, rgba(34,166,179,0.9), rgba(39,174,96,0.9));
+      background: linear-gradient(90deg, rgba(37,99,235,0.9), rgba(220,38,38,0.9));
       content: "";
     }
 
@@ -770,7 +770,7 @@
 
     .feature__visual--kenya {
       background:
-        radial-gradient(circle at 78% 20%, rgba(39,174,96,0.14), transparent 24%),
+        radial-gradient(circle at 78% 20%, rgba(220,38,38,0.14), transparent 24%),
         linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
     }
 
@@ -793,8 +793,8 @@
       display: grid;
       place-items: center;
       border-radius: 14px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(249,115,22,0.08);
+      border: 1px solid rgba(249,115,22,0.1);
       font-weight: 700;
     }
 
@@ -817,7 +817,7 @@
       min-height: 56px;
       width: 100%;
       padding: 0 16px;
-      border: 1px solid rgba(15,23,42,0.12);
+      border: 1px solid rgba(15,23,42,0.1);
       border-radius: var(--radius-sm);
       background: rgba(255,255,255,0.94);
       color: var(--text);
@@ -825,7 +825,7 @@
 
     .newsletter__message {
       min-height: 24px;
-      color: #93e8c2;
+      color: var(--secondary);
       font-size: 0.92rem;
     }
 
@@ -862,7 +862,7 @@
     .site-footer {
       padding: 56px 0 34px;
       background: #0f1117;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.05);
     }
 
     .footer__column h4 {
@@ -885,7 +885,7 @@
     .footer__base {
       margin-top: 24px;
       padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.05);
       color: var(--muted);
       font-size: 0.92rem;
     }
