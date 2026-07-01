@@ -23,16 +23,16 @@
       --secondary: #22a6b3;
       --accent: #27ae60;
       --accent-dark: #1f8a4c;
-      --bg: #0c1016;
-      --bg-soft: #111720;
-      --surface: rgba(18, 24, 34, 0.9);
-      --surface-solid: #141b25;
-      --surface-muted: #10161f;
-      --text: #f5f7fb;
-      --muted: #a7b1c2;
-      --line: rgba(255, 255, 255, 0.1);
-      --line-strong: rgba(255, 255, 255, 0.16);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.3);
+      --bg: #f8fafc;
+      --bg-soft: #ffffff;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-solid: #ffffff;
+      --surface-muted: #eef2f7;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: rgba(15, 23, 42, 0.08);
+      --line-strong: rgba(15, 23, 42, 0.14);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
       --radius-sm: 10px;
       --radius-md: 14px;
       --radius-lg: 18px;
@@ -59,9 +59,9 @@
       line-height: 1.7;
       color: var(--text);
       background:
-        radial-gradient(circle at top center, rgba(34, 166, 179, 0.18), transparent 22%),
-        radial-gradient(circle at 20% 20%, rgba(26, 95, 122, 0.24), transparent 28%),
-        linear-gradient(180deg, #091018 0%, #0d131b 45%, #0c1016 100%);
+        radial-gradient(circle at top center, rgba(34, 166, 179, 0.1), transparent 20%),
+        radial-gradient(circle at 20% 12%, rgba(26, 95, 122, 0.08), transparent 24%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 48%, #f5f7fb 100%);
     }
 
     a { color: inherit; text-decoration: none; }
@@ -170,7 +170,7 @@
     .nav__link {
       font-size: 0.96rem;
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.82);
+      color: #475569;
     }
 
     .site-header.is-scrolled .nav__link { color: #475569; }
@@ -199,8 +199,8 @@
     }
 
     .button--ghost {
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.04);
+      color: #0f172a;
+      background: rgba(15, 23, 42, 0.04);
     }
 
     .site-header.is-scrolled .button--ghost {
@@ -210,15 +210,15 @@
     }
 
     .button--primary {
-      color: #081018;
-      background: #ffffff;
-      border-color: #ffffff;
+      color: #ffffff;
+      background: #0f172a;
+      border-color: #0f172a;
     }
 
     .button--primary:hover { transform: translateY(-1px); }
 
     .button--secondary {
-      color: var(--text);
+      color: #0f172a;
       background: transparent;
       border-color: var(--line-strong);
     }
@@ -235,10 +235,10 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border: 1px solid rgba(15, 23, 42, 0.08);
       border-radius: var(--radius-sm);
-      color: var(--text);
-      background: rgba(255, 255, 255, 0.04);
+      color: #0f172a;
+      background: rgba(15, 23, 42, 0.04);
     }
 
     .site-header.is-scrolled .nav-toggle {
@@ -274,9 +274,9 @@
 
     .mobile-nav__panel {
       padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(15, 23, 42, 0.08);
       border-radius: 16px;
-      background: rgba(12, 18, 28, 0.95);
+      background: rgba(255, 255, 255, 0.98);
       box-shadow: var(--shadow);
     }
 
@@ -299,7 +299,7 @@
       position: absolute;
       inset: auto 0 0;
       height: 44%;
-      background: linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.08));
+      background: linear-gradient(180deg, rgba(255,255,255,0), rgba(15,23,42,0.04));
       content: "";
       pointer-events: none;
     }
@@ -322,9 +322,9 @@
       align-items: center;
       gap: 10px;
       padding: 10px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(15, 23, 42, 0.08);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.86);
       color: var(--text);
       font-size: 0.96rem;
     }
@@ -375,10 +375,10 @@
     .hero__mockup {
       position: relative;
       padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(15, 23, 42, 0.08);
       border-radius: 28px;
-      background: linear-gradient(180deg, rgba(20, 28, 39, 0.96), rgba(12, 18, 28, 0.96));
-      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.45);
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      box-shadow: 0 40px 120px rgba(15, 23, 42, 0.12);
       overflow: hidden;
     }
 
@@ -417,7 +417,7 @@
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.03);
+      background: #0f172a;
     }
 
     .mockup__label {
@@ -434,7 +434,7 @@
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(15, 23, 42, 0.04);
     }
 
     .metric-card__title {
@@ -469,7 +469,7 @@
       padding: 20px;
       border: 1px solid var(--line);
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(15, 23, 42, 0.04);
     }
 
     .chart-card__head,
@@ -541,9 +541,9 @@
     }
 
     .proof {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255, 255, 255, 0.02);
+      border-top: 1px solid rgba(15,23,42,0.08);
+      border-bottom: 1px solid rgba(15,23,42,0.08);
+      background: rgba(255, 255, 255, 0.84);
       overflow: hidden;
     }
 
@@ -564,10 +564,10 @@
 
     .marquee__item {
       padding: 12px 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(15, 23, 42, 0.08);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.03);
-      color: #e5eaf3;
+      background: #ffffff;
+      color: #0f172a;
       font-weight: 600;
       white-space: nowrap;
     }
@@ -581,7 +581,7 @@
       padding: 24px;
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.92);
     }
 
     .stat-card__value {
@@ -611,7 +611,7 @@
     .footer__column {
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.92);
     }
 
     .step-card,
@@ -690,16 +690,16 @@
       padding: 24px;
       border-top: 1px solid var(--line);
       background:
-        radial-gradient(circle at 20% 20%, rgba(34, 166, 179, 0.22), transparent 28%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        radial-gradient(circle at 20% 20%, rgba(34, 166, 179, 0.14), transparent 28%),
+        linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
     }
 
     .visual-card {
       position: absolute;
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 18px;
-      background: rgba(13, 20, 31, 0.92);
-      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+      background: rgba(15, 23, 42, 0.96);
+      box-shadow: 0 24px 48px rgba(15, 23, 42, 0.18);
     }
 
     .visual-card--primary {
@@ -770,14 +770,14 @@
 
     .feature__visual--kenya {
       background:
-        radial-gradient(circle at 78% 20%, rgba(39,174,96,0.22), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        radial-gradient(circle at 78% 20%, rgba(39,174,96,0.14), transparent 24%),
+        linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
     }
 
     .feature__visual--bangladesh {
       background:
-        radial-gradient(circle at 35% 20%, rgba(26,95,122,0.24), transparent 28%),
-        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        radial-gradient(circle at 35% 20%, rgba(26,95,122,0.14), transparent 28%),
+        linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
     }
 
     .testimonial-card__person {
@@ -817,9 +817,9 @@
       min-height: 56px;
       width: 100%;
       padding: 0 16px;
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid rgba(15,23,42,0.12);
       border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.94);
       color: var(--text);
     }
 

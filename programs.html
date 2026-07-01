@@ -22,11 +22,11 @@
       --primary: #1a5f7a;
       --secondary: #22a6b3;
       --accent: #27ae60;
-      --bg: #0c1016;
-      --surface: rgba(19, 26, 37, 0.92);
-      --text: #f5f7fb;
-      --muted: #a7b1c2;
-      --line: rgba(255,255,255,0.1);
+      --bg: #f8fafc;
+      --surface: rgba(255, 255, 255, 0.92);
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: rgba(15,23,42,0.08);
       --container: 1200px;
       --radius: 18px;
       --radius-sm: 10px;
@@ -39,8 +39,8 @@
       line-height: 1.7;
       color: var(--text);
       background:
-        radial-gradient(circle at top right, rgba(34,166,179,0.15), transparent 28%),
-        linear-gradient(180deg, #091018 0%, #0d131b 100%);
+        radial-gradient(circle at top right, rgba(34,166,179,0.08), transparent 24%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     }
     a { color: inherit; text-decoration: none; }
     button { font: inherit; cursor: pointer; }
@@ -107,7 +107,7 @@
       padding: 10px 18px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.88);
     }
     .hero__pill::after {
       width: 36px;
@@ -153,7 +153,7 @@
     .footer__column {
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.88);
     }
     .program {
       overflow: hidden;
@@ -161,7 +161,7 @@
     }
     .program__copy { padding: 30px; display: grid; gap: 16px; }
     .program__eyebrow {
-      color: #c9edf8;
+      color: #1a5f7a;
       font-size: 0.86rem;
       font-weight: 700;
       letter-spacing: 0.07em;
@@ -195,7 +195,7 @@
       width: 100%;
       height: 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.08);
+      background: rgba(15,23,42,0.08);
       overflow: hidden;
     }
     .progress__fill {
@@ -210,25 +210,25 @@
       min-height: 300px;
       border-top: 1px solid var(--line);
       background:
-        radial-gradient(circle at 28% 24%, rgba(26,95,122,0.24), transparent 30%),
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+        radial-gradient(circle at 28% 24%, rgba(26,95,122,0.12), transparent 30%),
+        linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
     }
     .program__visual--kenya {
       background:
-        radial-gradient(circle at 76% 20%, rgba(39,174,96,0.2), transparent 28%),
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+        radial-gradient(circle at 76% 20%, rgba(39,174,96,0.12), transparent 28%),
+        linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
     }
     .program__visual--bangladesh {
       background:
-        radial-gradient(circle at 22% 22%, rgba(34,166,179,0.22), transparent 28%),
-        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+        radial-gradient(circle at 22% 22%, rgba(34,166,179,0.12), transparent 28%),
+        linear-gradient(180deg, rgba(15,23,42,0.02), rgba(15,23,42,0.01));
     }
     .visual__card {
       position: absolute;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid rgba(15,23,42,0.08);
       border-radius: 18px;
-      background: rgba(10, 16, 24, 0.92);
-      box-shadow: 0 24px 48px rgba(0,0,0,0.2);
+      background: rgba(15, 23, 42, 0.96);
+      box-shadow: 0 24px 48px rgba(15,23,42,0.16);
     }
     .visual__card--large {
       inset: 28px 28px auto 28px;
