@@ -1123,18 +1123,18 @@
           <p class="section__lead">These counters are public-facing, but they are also designed to communicate the shape of the campaign like a real operating dashboard.</p>
         </div>
 
-        <div class="stats">
+        <div class="stats" data-stats>
           <article class="stat-card" data-reveal>
             <div class="stat-card__value" data-count="10000">0</div>
             <div class="stat-card__label">Children targeted</div>
           </article>
           <article class="stat-card" data-reveal>
             <div class="stat-card__value" data-money="50000">$0</div>
-            <div class="stat-card__label">Fundraising goal</div>
+            <div class="stat-card__label">Fundraising target</div>
           </article>
           <article class="stat-card" data-reveal>
             <div class="stat-card__value" data-count="3">0</div>
-            <div class="stat-card__label">Countries</div>
+            <div class="stat-card__label">Countries activated</div>
           </article>
           <article class="stat-card" data-reveal>
             <div class="stat-card__value" data-count="200">0</div>
@@ -1441,6 +1441,7 @@
     const navToggle = document.querySelector('[data-nav-toggle]');
     const mobileNav = document.querySelector('[data-mobile-nav]');
     const revealItems = document.querySelectorAll('[data-reveal]');
+    const statsSection = document.querySelector('[data-stats]');
     const counters = document.querySelectorAll('[data-count], [data-money]');
     const faqItems = document.querySelectorAll('.faq');
     const newsletterForm = document.querySelector('[data-newsletter-form]');
@@ -1466,6 +1467,8 @@
     }, { threshold: 0.16 });
 
     const animateValue = (element) => {
+      if (element.dataset.animated === 'true') return;
+      element.dataset.animated = 'true';
       const target = Number(element.dataset.count || element.dataset.money || 0);
       const isMoney = element.hasAttribute('data-money');
       const duration = 1400;
@@ -1484,13 +1487,23 @@
       requestAnimationFrame(tick);
     };
 
-    const countObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        animateValue(entry.target);
-        countObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.35 });
+    const runCounters = () => {
+      counters.forEach((counter) => animateValue(counter));
+    };
+
+    if (statsSection && 'IntersectionObserver' in window) {
+      const countObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          runCounters();
+          countObserver.unobserve(entry.target);
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+
+      countObserver.observe(statsSection);
+    } else {
+      runCounters();
+    }
 
     const trackScrollDepth = () => {
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -1534,7 +1547,6 @@
     });
 
     revealItems.forEach((item) => revealObserver.observe(item));
-    counters.forEach((counter) => countObserver.observe(counter));
     navToggle.addEventListener('click', toggleNav);
     window.addEventListener('scroll', updateHeader, { passive: true });
     window.addEventListener('scroll', trackScrollDepth, { passive: true });
