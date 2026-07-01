@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn about HopeTrack International's mission, team, and milestones behind the Education for All 2026 campaign.">
+  <meta property="og:title" content="HopeTrack International | About">
+  <meta property="og:description" content="Meet the fictional nonprofit team and mission powering Education for All 2026.">
+  <title>HopeTrack International | About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <style>
+    :root {
+      --color-primary: #1a5f7a;
+      --color-secondary: #22a6b3;
+      --color-accent: #27ae60;
+      --color-accent-dark: #1f8a4c;
+      --color-bg: #f0f4f8;
+      --color-surface: #ffffff;
+      --color-text: #1a1a2e;
+      --color-muted: #636e72;
+      --color-border: rgba(26, 95, 122, 0.14);
+      --color-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      --color-shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.14);
+      --radius-card: 16px;
+      --radius-pill: 999px;
+      --container: 1180px;
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 32px;
+      --space-5: 40px;
+      --space-6: 48px;
+      --space-7: 64px;
+      --space-8: 80px;
+      --space-9: 100px;
+      --space-10: 120px;
+      --header-height: 84px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: linear-gradient(180deg, #f7fbfd 0%, #f0f4f8 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, select { font: inherit; }
+    button {
+      border: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid rgba(39, 174, 96, 0.35);
+      outline-offset: 3px;
+    }
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -48px;
+      padding: 12px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--color-surface);
+      box-shadow: var(--color-shadow);
+      z-index: 1000;
+      transition: top 0.3s ease;
+    }
+    .skip-link:focus { top: 16px; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 10px 30px rgba(12, 31, 47, 0.08);
+    }
+    .header__inner,
+    .section__inner,
+    .footer__inner {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
+    }
+    .header__inner {
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(26, 95, 122, 0.08);
+      color: var(--color-primary);
+    }
+    .nav-toggle__bar,
+    .nav-toggle__bar::before,
+    .nav-toggle__bar::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: all 0.3s ease;
+      content: '';
+    }
+    .nav-toggle__bar::before { transform: translateY(-6px); }
+    .nav-toggle__bar::after { transform: translateY(4px); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar { background: transparent; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar::before { transform: translateY(0) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar::after { transform: translateY(-2px) rotate(-45deg); }
+    .nav {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 16px;
+      left: 16px;
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--color-border);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: var(--color-shadow);
+      transform: scaleY(0.92);
+      transform-origin: top;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .nav--open { transform: scaleY(1); opacity: 1; pointer-events: auto; }
+    .nav__link { font-weight: 600; color: var(--color-muted); }
+    .nav__link--active, .nav__link:hover { color: var(--color-primary); }
+    .hero {
+      padding: var(--space-9) 0 var(--space-8);
+    }
+    .hero__inner {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
+      display: grid;
+      gap: var(--space-6);
+    }
+    .hero__grid {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(34, 166, 179, 0.12);
+      color: var(--color-primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: clamp(3rem, 6vw, 4rem); }
+    h2 { font-size: clamp(2.25rem, 4vw, 2.625rem); }
+    .hero__lead,
+    .section__description,
+    .card__text,
+    .timeline__text,
+    .footer__text { color: var(--color-muted); }
+    .hero__panel,
+    .card,
+    .timeline__item {
+      background: var(--color-surface);
+      border-radius: 24px;
+      border: 1px solid rgba(26, 95, 122, 0.08);
+      box-shadow: var(--color-shadow);
+    }
+    .hero__panel {
+      padding: var(--space-5);
+      display: grid;
+      gap: var(--space-3);
+    }
+    .section { padding: var(--space-9) 0; }
+    .section__header {
+      display: grid;
+      gap: var(--space-2);
+      margin-bottom: var(--space-6);
+    }
+    .section__kicker {
+      color: var(--color-secondary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .card-grid,
+    .timeline,
+    .footer__grid {
+      display: grid;
+      gap: var(--space-3);
+    }
+    .card {
+      padding: var(--space-4);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--color-shadow-hover);
+    }
+    .card__avatar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(26,95,122,0.12), rgba(34,166,179,0.22));
+      color: var(--color-primary);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: var(--space-3);
+    }
+    .card__role {
+      display: inline-flex;
+      margin: 12px 0;
+      padding: 6px 10px;
+      border-radius: var(--radius-pill);
+      background: rgba(34, 166, 179, 0.1);
+      color: var(--color-primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    .timeline__item {
+      position: relative;
+      padding: var(--space-4);
+      padding-left: calc(var(--space-4) + 24px);
+    }
+    .timeline__item::before {
+      position: absolute;
+      left: 24px;
+      top: 28px;
+      bottom: -24px;
+      width: 2px;
+      background: rgba(26,95,122,0.14);
+      content: '';
+    }
+    .timeline__item:last-child::before { display: none; }
+    .timeline__item::after {
+      position: absolute;
+      left: 17px;
+      top: 22px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+      box-shadow: 0 0 0 6px rgba(34,166,179,0.14);
+      content: '';
+    }
+    .timeline__year {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      background: var(--color-accent);
+      color: var(--color-surface);
+      box-shadow: var(--color-shadow);
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      transform: scale(1.02) translateY(-2px);
+      background: var(--color-accent-dark);
+      box-shadow: var(--color-shadow-hover);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .footer {
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.9);
+    }
+    .footer__inner { padding: var(--space-8) 0 var(--space-4); }
+    .footer__title {
+      margin-bottom: var(--space-2);
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    .footer__list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .footer__link,
+    .footer__text { color: rgba(255,255,255,0.72); }
+    .footer__bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: var(--space-6);
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.56);
+      font-size: 0.95rem;
+    }
+    @media (min-width: 768px) {
+      .nav-toggle { display: none; }
+      .nav {
+        position: static;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+      }
+      .hero__grid,
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .card-grid--team {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .footer__grid {
+        grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      }
+      .footer__bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="header__inner">
+      <a class="logo" href="index.html">HopeTrack International</a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" data-nav-toggle>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" aria-label="Main navigation" data-nav>
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link nav__link--active" href="about.html">About</a>
+        <a class="nav__link" href="programs.html">Programs</a>
+        <a class="nav__link" href="donate.html">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ========================================
+         SECTION : About hero
+         Purpose : Introduce mission and positioning
+         GA4 events : join_mission_click
+         ======================================== -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__grid">
+          <div class="fade-in">
+            <span class="eyebrow">About HopeTrack</span>
+            <h1>Built around evidence, dignity, and local partnership.</h1>
+            <p class="hero__lead">HopeTrack International is a fictional nonprofit created for a portfolio case study, but its operating logic mirrors real-world education campaigns: measurable goals, strong field storytelling, and data-informed decisions across fundraising and program delivery.</p>
+          </div>
+          <aside class="hero__panel fade-in">
+            <h2>Mission statement</h2>
+            <p class="hero__lead">We connect donors, campaign teams, and country programs around one shared commitment: helping children stay in school and thrive in safe learning environments.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION : Team
+         Purpose : Humanize the organization
+         GA4 events : none
+         ======================================== -->
+    <section class="section">
+      <div class="section__inner">
+        <div class="section__header fade-in">
+          <span class="section__kicker">Team</span>
+          <h2>The people steering the campaign.</h2>
+          <p class="section__description">This fictional leadership team is designed to reflect the kind of cross-functional collaboration required to run a strong international fundraising initiative.</p>
+        </div>
+        <div class="card-grid card-grid--team">
+          <article class="card fade-in">
+            <span class="card__avatar" aria-hidden="true">AM</span>
+            <h3>Amara Mensah</h3>
+            <span class="card__role">Executive Director</span>
+            <p class="card__text">Shapes the campaign strategy, partner relationships, and executive reporting priorities for Education for All 2026.</p>
+          </article>
+          <article class="card fade-in">
+            <span class="card__avatar" aria-hidden="true">DK</span>
+            <h3>Daniel Kimani</h3>
+            <span class="card__role">Programs Lead</span>
+            <p class="card__text">Coordinates local implementation with education teams in Kenya and builds measurable program milestones.</p>
+          </article>
+          <article class="card fade-in">
+            <span class="card__avatar" aria-hidden="true">SF</span>
+            <h3>Salma Farooq</h3>
+            <span class="card__role">Fundraising Manager</span>
+            <p class="card__text">Connects donor acquisition, message testing, and conversion tracking so fundraising performance can improve quickly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION : Timeline
+         Purpose : Show organizational momentum
+         GA4 events : none
+         ======================================== -->
+    <section class="section">
+      <div class="section__inner">
+        <div class="section__header fade-in">
+          <span class="section__kicker">Timeline</span>
+          <h2>Key milestones from 2020 to 2026.</h2>
+          <p class="section__description">Each milestone reflects a step toward sharper fundraising operations and stronger education outcomes.</p>
+        </div>
+        <div class="timeline">
+          <article class="timeline__item fade-in">
+            <span class="timeline__year">2020</span>
+            <h3>HopeTrack launches with a child-centered education mission.</h3>
+            <p class="timeline__text">The organization begins as a small coalition connecting education recovery and donor-funded school support.</p>
+          </article>
+          <article class="timeline__item fade-in">
+            <span class="timeline__year">2022</span>
+            <h3>First regional campaign proves the value of better digital tracking.</h3>
+            <p class="timeline__text">Leadership identifies attribution gaps and starts investing in stronger channel-level measurement.</p>
+          </article>
+          <article class="timeline__item fade-in">
+            <span class="timeline__year">2024</span>
+            <h3>Program expansion reaches East Africa and South Asia.</h3>
+            <p class="timeline__text">HopeTrack pilots education access and digital skills programming in multiple field contexts.</p>
+          </article>
+          <article class="timeline__item fade-in">
+            <span class="timeline__year">2026</span>
+            <h3>Education for All becomes the flagship integrated fundraising campaign.</h3>
+            <p class="timeline__text">The organization aligns donor messaging, web journeys, and campaign analytics to raise $50,000 and recruit 200 new members.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================
+         SECTION : CTA
+         Purpose : Push motivated users to donate
+         GA4 events : join_mission_click
+         ======================================== -->
+    <section class="section">
+      <div class="section__inner">
+        <article class="hero__panel fade-in">
+          <span class="eyebrow">Take action</span>
+          <h2>Join our mission and help turn campaign intent into measurable impact.</h2>
+          <p class="hero__lead">Whether you give once or become a monthly member, your contribution supports classrooms, digital access, and girl-focused retention efforts.</p>
+          <div>
+            <a class="btn" href="donate.html" data-join-mission>Join our mission</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <section>
+          <h2 class="footer__title">HopeTrack International</h2>
+          <p class="footer__text">A premium fictional nonprofit experience built to demonstrate analytics, measurement, and campaign storytelling in a portfolio context.</p>
+        </section>
+        <section>
+          <h2 class="footer__title">Quick Links</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="index.html">Home</a></li>
+            <li><a class="footer__link" href="programs.html">Programs</a></li>
+            <li><a class="footer__link" href="donate.html">Donate</a></li>
+            <li><a class="footer__link" href="utm-framework.html">UTM Framework</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="footer__title">Contact</h2>
+          <ul class="footer__list">
+            <li class="footer__text">partnerships@hopetrack.org</li>
+            <li class="footer__text">+41 00 000 2026</li>
+            <li class="footer__text">Geneva, Switzerland</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="footer__title">Campaign</h2>
+          <ul class="footer__list">
+            <li class="footer__text">Education for All 2026</li>
+            <li class="footer__text">Target: 10,000 children</li>
+            <li class="footer__text">Goal: $50,000</li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 HopeTrack International</span>
+        <span>Prepared as a portfolio analytics experience for GitHub Pages.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const HopeTrackAnalytics = {
+      track: (eventName, params = {}) => {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', eventName, {
+            ...params,
+            timestamp: new Date().toISOString(),
+            environment: 'portfolio_demo'
+          });
+        }
+        console.log('[HopeTrack Analytics]', eventName, params);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.querySelector('[data-nav-toggle]');
+      const nav = document.querySelector('[data-nav]');
+      const fadeInElements = document.querySelectorAll('.fade-in');
+
+      navToggle?.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!isExpanded));
+        nav.classList.toggle('nav--open');
+      });
+
+      nav?.addEventListener('click', (event) => {
+        if (event.target instanceof HTMLAnchorElement && nav.classList.contains('nav--open')) {
+          nav.classList.remove('nav--open');
+          navToggle?.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.18 });
+
+      fadeInElements.forEach((element) => observer.observe(element));
+
+      // Track mission CTA clicks to measure when content on the about page
+      // successfully turns interest into donation intent.
+      document.querySelector('[data-join-mission]')?.addEventListener('click', () => {
+        HopeTrackAnalytics.track('join_mission_click', {
+          page: 'about'
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Support HopeTrack International's Education for All 2026 campaign through a simple donation experience with GA4 event tracking.">
+  <meta property="og:title" content="HopeTrack International | Donate">
+  <meta property="og:description" content="Choose an amount, donor type, and submit a tracked donation form for the Education for All 2026 campaign.">
+  <title>HopeTrack International | Donate</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <style>
+    :root {
+      --color-primary: #1a5f7a;
+      --color-secondary: #22a6b3;
+      --color-accent: #27ae60;
+      --color-accent-dark: #1f8a4c;
+      --color-bg: #f0f4f8;
+      --color-surface: #ffffff;
+      --color-text: #1a1a2e;
+      --color-muted: #636e72;
+      --color-danger: #c0392b;
+      --color-border: rgba(26, 95, 122, 0.14);
+      --color-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      --color-shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.14);
+      --radius-card: 16px;
+      --radius-pill: 999px;
+      --container: 1180px;
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 32px;
+      --space-5: 40px;
+      --space-6: 48px;
+      --space-7: 64px;
+      --space-8: 80px;
+      --space-9: 100px;
+      --header-height: 84px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--color-text);
+      background: linear-gradient(180deg, #f8fbfd 0%, #edf4f7 100%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input {
+      font: inherit;
+    }
+    button {
+      border: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid rgba(39, 174, 96, 0.35);
+      outline-offset: 3px;
+    }
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -48px;
+      padding: 12px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--color-surface);
+      box-shadow: var(--color-shadow);
+      z-index: 1000;
+      transition: top 0.3s ease;
+    }
+    .skip-link:focus { top: 16px; }
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 10px 30px rgba(12, 31, 47, 0.08);
+    }
+    .header__inner,
+    .section__inner,
+    .footer__inner {
+      width: min(100% - 32px, 1180px);
+      margin: 0 auto;
+    }
+    .header__inner {
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .nav-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(26,95,122,0.08);
+      color: var(--color-primary);
+    }
+    .nav-toggle__bar,
+    .nav-toggle__bar::before,
+    .nav-toggle__bar::after {
+      display: block;
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+      transition: all 0.3s ease;
+      content: '';
+    }
+    .nav-toggle__bar::before { transform: translateY(-6px); }
+    .nav-toggle__bar::after { transform: translateY(4px); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar { background: transparent; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar::before { transform: translateY(0) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar::after { transform: translateY(-2px) rotate(-45deg); }
+    .nav {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 16px;
+      left: 16px;
+      display: grid;
+      gap: 12px;
+      padding: 18px;
+      border: 1px solid var(--color-border);
+      border-radius: 24px;
+      background: rgba(255,255,255,0.98);
+      box-shadow: var(--color-shadow);
+      transform: scaleY(0.92);
+      transform-origin: top;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .nav--open { transform: scaleY(1); opacity: 1; pointer-events: auto; }
+    .nav__link { font-weight: 600; color: var(--color-muted); }
+    .nav__link--active, .nav__link:hover { color: var(--color-primary); }
+    .section { padding: var(--space-9) 0; }
+    .hero {
+      padding-bottom: var(--space-6);
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(34,166,179,0.12);
+      color: var(--color-primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    h1 { font-size: clamp(3rem, 6vw, 4rem); }
+    h2 { font-size: clamp(2rem, 4vw, 2.5rem); }
+    .hero__lead,
+    .section__description,
+    .card__text,
+    .footer__text,
+    .helper-text { color: var(--color-muted); }
+    .layout {
+      display: grid;
+      gap: var(--space-4);
+    }
+    .card {
+      padding: var(--space-4);
+      border-radius: 24px;
+      background: var(--color-surface);
+      border: 1px solid rgba(26,95,122,0.08);
+      box-shadow: var(--color-shadow);
+    }
+    .card--spaced {
+      margin-top: 32px;
+    }
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-2);
+    }
+    .choice-button,
+    .type-button {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(26,95,122,0.06);
+      color: var(--color-primary);
+      font-weight: 700;
+      text-align: center;
+    }
+    .choice-button:hover,
+    .type-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--color-shadow);
+    }
+    .choice-button.is-selected,
+    .type-button.is-selected {
+      background: var(--color-primary);
+      color: var(--color-surface);
+    }
+    .form-grid {
+      display: grid;
+      gap: var(--space-3);
+      margin-top: var(--space-4);
+    }
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+    .field--spaced {
+      margin-top: 24px;
+    }
+    .choice-grid--type {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    label {
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid rgba(26,95,122,0.16);
+      border-radius: 16px;
+      background: #fff;
+      color: var(--color-text);
+    }
+    .trust-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+      margin: 0;
+    }
+    .trust-list li {
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(39,174,96,0.1);
+      color: var(--color-accent-dark);
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 56px;
+      padding: 14px 22px;
+      border-radius: var(--radius-pill);
+      background: var(--color-accent);
+      color: var(--color-surface);
+      font-weight: 700;
+      box-shadow: var(--color-shadow);
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      transform: scale(1.02) translateY(-2px);
+      background: var(--color-accent-dark);
+      box-shadow: var(--color-shadow-hover);
+    }
+    .btn.is-loading {
+      opacity: 0.8;
+      pointer-events: none;
+    }
+    .error-message {
+      margin-top: 8px;
+      color: var(--color-danger);
+      font-size: 0.95rem;
+      font-weight: 600;
+      min-height: 24px;
+    }
+    .thank-you {
+      display: none;
+      margin-top: var(--space-4);
+      padding: var(--space-4);
+      border-radius: 20px;
+      background: rgba(39,174,96,0.12);
+      border: 1px solid rgba(39,174,96,0.2);
+    }
+    .thank-you.is-visible { display: block; }
+    .footer {
+      background: #1a1a2e;
+      color: rgba(255,255,255,0.9);
+    }
+    .footer__inner { padding: var(--space-8) 0 var(--space-4); }
+    .footer__grid {
+      display: grid;
+      gap: var(--space-3);
+    }
+    .footer__title {
+      margin-bottom: var(--space-2);
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    .footer__list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .footer__link,
+    .footer__text { color: rgba(255,255,255,0.72); }
+    .footer__bottom {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: var(--space-6);
+      padding-top: var(--space-4);
+      border-top: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.56);
+      font-size: 0.95rem;
+    }
+    @media (min-width: 768px) {
+      .nav-toggle { display: none; }
+      .nav {
+        position: static;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+      }
+      .layout {
+        grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+        align-items: start;
+      }
+      .choice-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+      .form-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .field--full {
+        grid-column: 1 / -1;
+      }
+      .footer__grid {
+        grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      }
+      .footer__bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="header__inner">
+      <a class="logo" href="index.html">HopeTrack International</a>
+      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" data-nav-toggle>
+        <span class="nav-toggle__bar"></span>
+      </button>
+      <nav class="nav" aria-label="Main navigation" data-nav>
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="programs.html">Programs</a>
+        <a class="nav__link nav__link--active" href="donate.html">Donate</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ========================================
+         SECTION : Donation form
+         Purpose : Capture donation intent and form completion
+         GA4 events : donation_amount_selected, donation_type_selected, donation_form_submitted
+         ======================================== -->
+    <section class="section hero">
+      <div class="section__inner layout">
+        <div>
+          <span class="eyebrow">Donate</span>
+          <h1>Give today. Keep a child learning tomorrow.</h1>
+          <p class="hero__lead">Choose a donation amount, decide whether you want to give once or monthly, and complete a simple gift experience designed for campaign measurement.</p>
+          <div class="card card--spaced">
+            <h2>Why your support matters</h2>
+            <p class="helper-text">Every tracked donation helps HopeTrack understand which messages and pathways lead to the strongest outcomes, making future fundraising smarter and more accountable.</p>
+            <ul class="trust-list">
+              <li>Secure</li>
+              <li>Transparent</li>
+              <li>Impactful</li>
+            </ul>
+          </div>
+        </div>
+        <section class="card" aria-labelledby="donation-form-title">
+          <h2 id="donation-form-title">Complete your contribution</h2>
+          <p class="helper-text">All fields are required so the experience can simulate a realistic donor flow.</p>
+          <form novalidate data-donation-form>
+            <div class="field">
+              <label for="custom-amount">Choose an amount</label>
+              <div class="choice-grid" role="group" aria-label="Donation amount options">
+                <button class="choice-button" type="button" data-amount="10">$10</button>
+                <button class="choice-button" type="button" data-amount="25">$25</button>
+                <button class="choice-button" type="button" data-amount="50">$50</button>
+                <button class="choice-button" type="button" data-amount="100">$100</button>
+                <input id="custom-amount" name="custom_amount" type="number" min="1" step="1" placeholder="Custom" aria-label="Custom donation amount">
+              </div>
+            </div>
+
+            <div class="field field--spaced">
+              <label>Donor type</label>
+              <div class="choice-grid choice-grid--type" role="group" aria-label="Donation type options">
+                <button class="type-button" type="button" data-type="one-time">One-time</button>
+                <button class="type-button" type="button" data-type="monthly">Monthly member</button>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="first-name">First name</label>
+                <input id="first-name" name="first_name" type="text" required>
+              </div>
+              <div class="field">
+                <label for="last-name">Last name</label>
+                <input id="last-name" name="last_name" type="text" required>
+              </div>
+              <div class="field field--full">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required>
+              </div>
+            </div>
+
+            <div class="error-message" aria-live="polite" data-form-error></div>
+            <button class="btn" type="submit" data-submit-button>Complete Donation</button>
+          </form>
+          <div class="thank-you" data-thank-you>
+            <h3>Thank you for supporting HopeTrack International.</h3>
+            <p class="helper-text">Your contribution has been recorded in this demo flow, and the conversion event has been triggered for GA4 testing.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__grid">
+        <section>
+          <h2 class="footer__title">HopeTrack International</h2>
+          <p class="footer__text">A fictional nonprofit designed to demonstrate conversion tracking and donor journey instrumentation.</p>
+        </section>
+        <section>
+          <h2 class="footer__title">Quick Links</h2>
+          <ul class="footer__list">
+            <li><a class="footer__link" href="index.html">Home</a></li>
+            <li><a class="footer__link" href="about.html">About</a></li>
+            <li><a class="footer__link" href="programs.html">Programs</a></li>
+            <li><a class="footer__link" href="utm-framework.html">UTM Framework</a></li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="footer__title">Contact</h2>
+          <ul class="footer__list">
+            <li class="footer__text">partnerships@hopetrack.org</li>
+            <li class="footer__text">+41 00 000 2026</li>
+            <li class="footer__text">Geneva, Switzerland</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="footer__title">Campaign</h2>
+          <ul class="footer__list">
+            <li class="footer__text">Education for All 2026</li>
+            <li class="footer__text">Goal: $50,000</li>
+            <li class="footer__text">Target: 200 new members</li>
+          </ul>
+        </section>
+      </div>
+      <div class="footer__bottom">
+        <span>&copy; 2026 HopeTrack International</span>
+        <span>Prepared as a portfolio analytics experience for GitHub Pages.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const HopeTrackAnalytics = {
+      track: (eventName, params = {}) => {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', eventName, {
+            ...params,
+            timestamp: new Date().toISOString(),
+            environment: 'portfolio_demo'
+          });
+        }
+        console.log('[HopeTrack Analytics]', eventName, params);
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const navToggle = document.querySelector('[data-nav-toggle]');
+      const nav = document.querySelector('[data-nav]');
+      const amountButtons = document.querySelectorAll('[data-amount]');
+      const typeButtons = document.querySelectorAll('[data-type]');
+      const customAmountField = document.getElementById('custom-amount');
+      const donationForm = document.querySelector('[data-donation-form]');
+      const formError = document.querySelector('[data-form-error]');
+      const thankYou = document.querySelector('[data-thank-you]');
+      const submitButton = document.querySelector('[data-submit-button]');
+
+      let selectedAmount = '';
+      let selectedType = '';
+
+      navToggle?.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!isExpanded));
+        nav.classList.toggle('nav--open');
+      });
+
+      nav?.addEventListener('click', (event) => {
+        if (event.target instanceof HTMLAnchorElement && nav.classList.contains('nav--open')) {
+          nav.classList.remove('nav--open');
+          navToggle?.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      const updateSelectedAmount = (value) => {
+        selectedAmount = value;
+        amountButtons.forEach((button) => {
+          button.classList.toggle('is-selected', button.getAttribute('data-amount') === value);
+        });
+      };
+
+      // Track amount selection to understand which donation anchor points
+      // drive the highest conversion intent on the donation page.
+      amountButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const amount = button.getAttribute('data-amount');
+          customAmountField.value = '';
+          updateSelectedAmount(amount);
+          HopeTrackAnalytics.track('donation_amount_selected', {
+            amount,
+            page: 'donate'
+          });
+        });
+      });
+
+      customAmountField?.addEventListener('input', () => {
+        const customValue = customAmountField.value.trim();
+        updateSelectedAmount(customValue);
+      });
+
+      // Track donor type selection to compare one-time and monthly interest.
+      // This is useful for evaluating potential recurring revenue mix.
+      typeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          selectedType = button.getAttribute('data-type');
+          typeButtons.forEach((item) => item.classList.toggle('is-selected', item === button));
+          HopeTrackAnalytics.track('donation_type_selected', {
+            type: selectedType,
+            page: 'donate'
+          });
+        });
+      });
+
+      const validateForm = () => {
+        const firstName = donationForm.first_name.value.trim();
+        const lastName = donationForm.last_name.value.trim();
+        const email = donationForm.email.value.trim();
+        const resolvedAmount = selectedAmount || customAmountField.value.trim();
+
+        if (!resolvedAmount) {
+          return 'Please choose a donation amount.';
+        }
+
+        if (!selectedType) {
+          return 'Please choose a donor type.';
+        }
+
+        if (!firstName || !lastName || !email) {
+          return 'Please complete all form fields.';
+        }
+
+        const emailPattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+        if (!emailPattern.test(email)) {
+          return 'Please enter a valid email address.';
+        }
+
+        return '';
+      };
+
+      donationForm?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        formError.textContent = '';
+
+        const validationError = validateForm();
+        if (validationError) {
+          formError.textContent = validationError;
+          return;
+        }
+
+        const resolvedAmount = selectedAmount || customAmountField.value.trim();
+        const resolvedType = selectedType;
+
+        submitButton.classList.add('is-loading');
+        submitButton.textContent = 'Processing...';
+
+        window.setTimeout(() => {
+          submitButton.classList.remove('is-loading');
+          submitButton.textContent = 'Complete Donation';
+          donationForm.reset();
+          amountButtons.forEach((button) => button.classList.remove('is-selected'));
+          typeButtons.forEach((button) => button.classList.remove('is-selected'));
+          thankYou.classList.add('is-visible');
+
+          // Track donation form submissions as the primary conversion signal
+          // for the campaign's end-to-end fundraising flow.
+          HopeTrackAnalytics.track('donation_form_submitted', {
+            amount: resolvedAmount,
+            type: resolvedType,
+            page: 'donate'
+          });
+
+          selectedAmount = '';
+          selectedType = '';
+        }, 700);
+      });
+    });
+  </script>
+</body>
+</html>
