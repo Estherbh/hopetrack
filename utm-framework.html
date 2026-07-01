@@ -22,304 +22,324 @@
       --color-primary: #1a5f7a;
       --color-secondary: #22a6b3;
       --color-accent: #27ae60;
-      --color-bg: #f0f4f8;
-      --color-surface: #ffffff;
-      --color-text: #1a1a2e;
-      --color-muted: #636e72;
-      --color-danger: #c0392b;
-      --color-border: rgba(26, 95, 122, 0.14);
-      --color-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-      --color-shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.14);
-      --radius-card: 16px;
-      --radius-pill: 999px;
+      --color-danger: #e77b63;
+      --color-bg: #111111;
+      --color-surface: #171717;
+      --color-text: #f4f1ea;
+      --color-muted: #a39c90;
+      --color-border: rgba(255,255,255,0.08);
+      --color-border-strong: rgba(255,255,255,0.16);
       --container: 1180px;
-      --space-1: 8px;
-      --space-2: 16px;
+      --radius-sm: 10px;
       --space-3: 24px;
       --space-4: 32px;
       --space-5: 40px;
       --space-6: 48px;
       --space-7: 64px;
       --space-8: 80px;
+      --header-height: 84px;
     }
-    *, *::before, *::after { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       font-size: 18px;
       line-height: 1.7;
       color: var(--color-text);
-      background: var(--color-bg);
+      background: linear-gradient(180deg, #111111 0%, #0d0d0d 100%);
     }
     a { color: inherit; text-decoration: none; }
-    button, input {
-      font: inherit;
-    }
+    button, input { font: inherit; }
     button {
-      border: 0;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
     }
-    button:focus-visible,
-    input:focus-visible,
-    a:focus-visible {
+    a:focus-visible, button:focus-visible, input:focus-visible {
       outline: 3px solid rgba(39, 174, 96, 0.35);
       outline-offset: 3px;
     }
-    .hero {
-      padding: var(--space-8) 0;
-      background: linear-gradient(135deg, #1a5f7a 0%, #22a6b3 100%);
-      color: var(--color-surface);
-    }
-    .hero__inner,
-    .section__inner,
-    .footer__inner {
+    .container {
       width: min(100% - 32px, var(--container));
       margin: 0 auto;
     }
-    .eyebrow {
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(17,17,17,0.9);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .header__inner {
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+    }
+    .logo {
       display: inline-flex;
-      padding: 8px 14px;
-      border-radius: var(--radius-pill);
-      background: rgba(255,255,255,0.14);
-      font-size: 0.88rem;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+    }
+    .logo__mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--color-border-strong);
+      border-radius: 50%;
+    }
+    .nav {
+      display: none;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav__link {
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+    .nav__link:hover, .nav__link--active { color: var(--color-text); }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.02);
+      color: var(--color-text);
+      font-weight: 600;
+    }
+    .button--accent {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: #fff;
+    }
+    .hero {
+      padding: 84px 0 46px;
+      text-align: center;
+    }
+    .hero__chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+    }
+    .hero__chip::after {
+      width: 32px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+      content: "";
     }
     h1, h2, h3 {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      line-height: 1.1;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
     }
-    h1 { font-size: clamp(3rem, 6vw, 4rem); }
-    h2 { font-size: clamp(2rem, 4vw, 2.5rem); }
-    .hero__lead,
-    .section__description,
-    .card__text,
-    td,
-    th,
-    .footer__text { color: inherit; }
-    .hero__lead {
-      max-width: 760px;
-      margin-top: 24px;
-      color: rgba(255,255,255,0.86);
-    }
-    .section {
-      padding: var(--space-8) 0;
-    }
-    .section__header {
-      display: grid;
-      gap: 12px;
-      margin-bottom: var(--space-5);
-    }
-    .section__kicker {
-      color: var(--color-secondary);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    .section__description {
-      max-width: 760px;
+    h1 { font-size: clamp(2.8rem, 7vw, 4.6rem); margin-top: 24px; }
+    h2 { font-size: clamp(2rem, 5vw, 2.8rem); }
+    h3 { font-size: 1.18rem; }
+    .hero p,
+    .section__intro p,
+    .table-wrap p,
+    .rule-card p,
+    .builder p,
+    .warning-card p,
+    .footer__column p {
       color: var(--color-muted);
     }
-    .card-grid,
+    .hero p {
+      max-width: 760px;
+      margin: 22px auto 0;
+      font-size: 1.16rem;
+    }
+    .section { padding: var(--space-8) 0; }
+    .section__intro {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+    .table-wrap,
+    .builder,
+    .rule-card,
+    .warning-card,
+    .footer__grid {
+      border: 1px solid var(--color-border);
+      border-radius: 18px;
+      background: var(--color-surface);
+    }
+    .table-wrap,
+    .builder,
+    .rule-card,
+    .warning-card {
+      padding: 24px;
+    }
+    .rules-grid,
     .warning-grid,
-    .builder-grid,
     .footer__grid {
       display: grid;
-      gap: var(--space-3);
-    }
-    .card,
-    .builder,
-    .table-wrap {
-      padding: var(--space-4);
-      border-radius: 24px;
-      background: var(--color-surface);
-      border: 1px solid rgba(26,95,122,0.08);
-      box-shadow: var(--color-shadow);
-    }
-    .card {
-      transition: all 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--color-shadow-hover);
-    }
-    .card__title {
-      margin-bottom: 12px;
-    }
-    .card__text {
-      color: var(--color-muted);
-      margin-bottom: 0;
-    }
-    .table-wrap {
-      overflow-x: auto;
+      gap: 16px;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      min-width: 760px;
+      font-size: 0.94rem;
     }
-    th,
-    td {
-      padding: 16px;
-      border-bottom: 1px solid rgba(26,95,122,0.1);
-      text-align: left;
+    th, td {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--color-border);
       vertical-align: top;
+      text-align: left;
     }
     th {
-      color: var(--color-primary);
-      font-size: 0.92rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    td {
       color: var(--color-muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.02em;
     }
-    .warning-card {
-      padding: var(--space-4);
-      border-radius: 20px;
-      background: rgba(192,57,43,0.08);
-      border: 1px solid rgba(192,57,43,0.16);
+    tr:last-child td { border-bottom: 0; }
+    .builder-grid {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
     }
-    .warning-card h3 {
-      margin-bottom: 12px;
-      color: var(--color-danger);
-    }
-    .builder-grid label {
+    label {
       display: grid;
       gap: 8px;
-      font-weight: 700;
-      font-size: 0.96rem;
+      font-size: 0.94rem;
+      color: #d8d1c5;
     }
     input {
+      min-height: 52px;
       width: 100%;
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(26,95,122,0.16);
-      background: #fff;
+      padding: 0 16px;
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.02);
       color: var(--color-text);
     }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 14px 22px;
-      border-radius: var(--radius-pill);
-      font-weight: 700;
-      box-shadow: var(--color-shadow);
-      transition: all 0.3s ease;
+    .builder__output {
+      margin-top: 16px;
+      padding: 18px;
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      color: #d8d1c5;
+      word-break: break-all;
     }
-    .btn:hover {
-      transform: scale(1.02) translateY(-2px);
-      box-shadow: var(--color-shadow-hover);
+    .builder__feedback {
+      min-height: 22px;
+      margin-top: 12px;
+      color: #9fe5b7;
+      font-size: 0.92rem;
     }
-    .btn--primary {
-      background: var(--color-accent);
-      color: var(--color-surface);
-    }
-    .btn--secondary {
-      background: rgba(26,95,122,0.08);
-      color: var(--color-primary);
-    }
+
     .builder__actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: var(--space-4);
+      margin-top: 20px;
     }
-    .builder__output {
-      margin-top: var(--space-4);
-      padding: var(--space-3);
-      border-radius: 18px;
-      background: rgba(26,95,122,0.06);
-      color: var(--color-primary);
-      font-weight: 600;
-      word-break: break-word;
-      min-height: 80px;
+    .warning-card {
+      border-color: rgba(231, 123, 99, 0.24);
+      background: rgba(231, 123, 99, 0.05);
     }
-    .footer {
-      background: #1a1a2e;
-      color: rgba(255,255,255,0.9);
+    .site-footer {
+      padding: 44px 0;
+      border-top: 1px solid var(--color-border);
+      background: #0d0d0d;
     }
-    .footer__inner { padding: var(--space-7) 0 var(--space-4); }
-    .footer__grid {
-      grid-template-columns: 1fr;
-    }
-    .footer__title {
-      margin-bottom: 12px;
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
+    .footer__links {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--color-muted);
     }
     .footer__bottom {
-      margin-top: var(--space-5);
-      padding-top: var(--space-3);
-      border-top: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.56);
-      font-size: 0.95rem;
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-muted);
+      font-size: 0.92rem;
     }
-    @media (min-width: 768px) {
-      .card-grid {
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-      }
-      .warning-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-      .builder-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .builder-grid label:last-of-type {
-        grid-column: 2;
-      }
-      .footer__grid {
-        grid-template-columns: 1.6fr 1fr 1fr;
-      }
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    [data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (min-width: 900px) {
+      .nav { display: inline-flex; }
+      .rules-grid,
+      .warning-grid,
+      .footer__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .builder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero__inner">
-      <span class="eyebrow">Campaign Tracking Standards</span>
-      <h1>HopeTrack International - UTM Naming Framework</h1>
-      <p class="hero__lead">Campaign Tracking Standards | Education for All 2026</p>
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="logo" href="index.html" aria-label="HopeTrack International home">
+        <span class="logo__mark">HT</span>
+        <span>HopeTrack</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="programs.html">Programs</a>
+        <a class="nav__link" href="donate.html">Donate</a>
+        <a class="nav__link nav__link--active" href="utm-framework.html">UTM Framework</a>
+      </nav>
+      <a class="button button--accent" href="donate.html">Open donate page</a>
     </div>
   </header>
 
   <main>
+    <section class="hero">
+      <div class="container">
+        <a class="hero__chip" href="donate.html">Campaign operations - naming standards and attribution logic</a>
+        <h1>Campaign Tracking Standards - Education for All 2026</h1>
+        <p>This page translates campaign measurement into plain English. It gives stakeholders a way to create consistent links without needing to understand GA4 internals.</p>
+      </div>
+    </section>
+
     <section class="section">
-      <div class="section__inner">
-        <div class="section__header">
-          <span class="section__kicker">Why it matters</span>
+      <div class="container">
+        <div class="section__intro" data-reveal>
           <h2>Why UTM parameters matter</h2>
-          <p class="section__description">UTM parameters make it possible to understand exactly where campaign traffic came from, how it was delivered, and which message or creative drove action. Without a shared naming structure, channel performance becomes harder to compare, attribution becomes messy, and optimization decisions lose credibility. A clean UTM framework gives both technical and non-technical stakeholders a common language for campaign measurement.</p>
+          <p>UTM parameters tell us where traffic came from, which campaign drove it, and what version of a message performed best. Without consistent naming, channel reporting becomes noisy and hard to trust. With consistent naming, teams can compare paid, owned, partner, and offline activity using the same structure.</p>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section__inner">
-        <div class="section__header">
-          <span class="section__kicker">Definitions</span>
-          <h2>UTM Parameter Definitions</h2>
-        </div>
-        <div class="table-wrap">
+      <div class="container">
+        <div class="table-wrap" data-reveal>
+          <h2>Parameter definitions</h2>
           <table>
             <thead>
-              <tr>
-                <th>Parameter</th>
-                <th>Purpose</th>
-                <th>Example</th>
-              </tr>
+              <tr><th>Parameter</th><th>Purpose</th></tr>
             </thead>
             <tbody>
-              <tr><td>utm_source</td><td>Where traffic comes from</td><td>facebook</td></tr>
-              <tr><td>utm_medium</td><td>How it was delivered</td><td>paid_social</td></tr>
-              <tr><td>utm_campaign</td><td>Which campaign</td><td>education_for_all_2026</td></tr>
-              <tr><td>utm_content</td><td>Which specific ad or link</td><td>hero_banner_v1</td></tr>
-              <tr><td>utm_term</td><td>Keyword for paid search only</td><td>donate_children_africa</td></tr>
+              <tr><td>utm_source</td><td>Identifies the platform, sender, or referring property driving the visit.</td></tr>
+              <tr><td>utm_medium</td><td>Describes the traffic type such as paid_social, email, referral, or offline.</td></tr>
+              <tr><td>utm_campaign</td><td>Groups links into the high-level campaign initiative.</td></tr>
+              <tr><td>utm_content</td><td>Separates creative versions, placements, or message variants.</td></tr>
+              <tr><td>utm_term</td><td>Optional field for keywords or extra classification when needed.</td></tr>
             </tbody>
           </table>
         </div>
@@ -327,50 +347,40 @@
     </section>
 
     <section class="section">
-      <div class="section__inner">
-        <div class="section__header">
-          <span class="section__kicker">Rules</span>
-          <h2>Naming Convention Rules</h2>
+      <div class="container">
+        <div class="section__intro" data-reveal>
+          <h2>Naming rules</h2>
+          <p>These rules are intentionally strict so reporting stays clean across teams and agencies.</p>
         </div>
-        <div class="card-grid">
-          <article class="card"><h3 class="card__title">Rule 1</h3><p class="card__text">Always lowercase - use "facebook" not "Facebook".</p></article>
-          <article class="card"><h3 class="card__title">Rule 2</h3><p class="card__text">Use underscores not spaces - use "paid_social" not "paid social".</p></article>
-          <article class="card"><h3 class="card__title">Rule 3</h3><p class="card__text">Be specific on utm_campaign - include the year.</p></article>
-          <article class="card"><h3 class="card__title">Rule 4</h3><p class="card__text">Use utm_content to identify the creative version.</p></article>
-          <article class="card"><h3 class="card__title">Rule 5</h3><p class="card__text">Never launch a campaign without UTM parameters.</p></article>
+        <div class="rules-grid">
+          <article class="rule-card" data-reveal><h3>Use lowercase only</h3><p>Avoid uppercase letters so the same source is not split into multiple values in reporting.</p></article>
+          <article class="rule-card" data-reveal><h3>Use underscores</h3><p>Separate words with underscores, not spaces or mixed punctuation.</p></article>
+          <article class="rule-card" data-reveal><h3>Keep campaign names stable</h3><p>Use one canonical campaign value such as <code>education_for_all_2026</code> across all channels.</p></article>
+          <article class="rule-card" data-reveal><h3>Describe the medium precisely</h3><p>Choose values like <code>paid_social</code>, <code>organic_social</code>, <code>email</code>, or <code>offline</code>.</p></article>
+          <article class="rule-card" data-reveal><h3>Use content for versioning</h3><p>Track creative differences such as <code>carousel_v1</code> or <code>launch_video_link</code>.</p></article>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section__inner">
-        <div class="section__header">
-          <span class="section__kicker">Examples</span>
-          <h2>UTM Examples Table</h2>
-        </div>
-        <div class="table-wrap">
+      <div class="container">
+        <div class="table-wrap" data-reveal>
+          <h2>UTM examples</h2>
           <table>
             <thead>
-              <tr>
-                <th>Channel</th>
-                <th>utm_source</th>
-                <th>utm_medium</th>
-                <th>utm_campaign</th>
-                <th>utm_content</th>
-                <th>Full UTM URL</th>
-              </tr>
+              <tr><th>Channel</th><th>Example URL</th></tr>
             </thead>
             <tbody>
-            <tr><td>Facebook paid ad</td><td>facebook</td><td>paid_social</td><td>education_for_all_2026</td><td>carousel_v1</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=education_for_all_2026&utm_content=carousel_v1</td></tr>
-            <tr><td>Instagram paid ad</td><td>instagram</td><td>paid_social</td><td>education_for_all_2026</td><td>story_v2</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=instagram&utm_medium=paid_social&utm_campaign=education_for_all_2026&utm_content=story_v2</td></tr>
-            <tr><td>LinkedIn organic post</td><td>linkedin</td><td>organic_social</td><td>education_for_all_2026</td><td>impact_post_v1</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=linkedin&utm_medium=organic_social&utm_campaign=education_for_all_2026&utm_content=impact_post_v1</td></tr>
-            <tr><td>Google paid search</td><td>google</td><td>paid_search</td><td>education_for_all_2026</td><td>donate_search_ad</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=google&utm_medium=paid_search&utm_campaign=education_for_all_2026&utm_content=donate_search_ad&utm_term=donate_children_africa</td></tr>
-            <tr><td>Newsletter email</td><td>newsletter</td><td>email</td><td>education_for_all_2026</td><td>march_appeal</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=newsletter&utm_medium=email&utm_campaign=education_for_all_2026&utm_content=march_appeal</td></tr>
-            <tr><td>Partner referral link</td><td>partner_network</td><td>referral</td><td>education_for_all_2026</td><td>partner_badge</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=partner_network&utm_medium=referral&utm_campaign=education_for_all_2026&utm_content=partner_badge</td></tr>
-            <tr><td>Twitter/X organic</td><td>x</td><td>organic_social</td><td>education_for_all_2026</td><td>thread_v1</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=x&utm_medium=organic_social&utm_campaign=education_for_all_2026&utm_content=thread_v1</td></tr>
-            <tr><td>YouTube video description</td><td>youtube</td><td>video</td><td>education_for_all_2026</td><td>launch_video_link</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=youtube&utm_medium=video&utm_campaign=education_for_all_2026&utm_content=launch_video_link</td></tr>
-            <tr><td>WhatsApp broadcast</td><td>whatsapp</td><td>messaging</td><td>education_for_all_2026</td><td>community_broadcast_v1</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=whatsapp&utm_medium=messaging&utm_campaign=education_for_all_2026&utm_content=community_broadcast_v1</td></tr>
-            <tr><td>Direct QR code</td><td>qr_code</td><td>offline</td><td>education_for_all_2026</td><td>event_poster</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=qr_code&utm_medium=offline&utm_campaign=education_for_all_2026&utm_content=event_poster</td></tr>
+              <tr><td>Facebook paid</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=facebook&utm_medium=paid_social&utm_campaign=education_for_all_2026&utm_content=carousel_v1</td></tr>
+              <tr><td>Instagram paid</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=instagram&utm_medium=paid_social&utm_campaign=education_for_all_2026&utm_content=story_v2</td></tr>
+              <tr><td>LinkedIn organic</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=linkedin&utm_medium=organic_social&utm_campaign=education_for_all_2026&utm_content=impact_post_v1</td></tr>
+              <tr><td>Google Search</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=google&utm_medium=paid_search&utm_campaign=education_for_all_2026&utm_content=donate_search_ad</td></tr>
+              <tr><td>Newsletter</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=newsletter&utm_medium=email&utm_campaign=education_for_all_2026&utm_content=march_appeal</td></tr>
+              <tr><td>Partner referral</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=partner_network&utm_medium=referral&utm_campaign=education_for_all_2026&utm_content=partner_badge</td></tr>
+              <tr><td>Twitter or X organic</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=x&utm_medium=organic_social&utm_campaign=education_for_all_2026&utm_content=thread_v1</td></tr>
+              <tr><td>YouTube</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=youtube&utm_medium=video&utm_campaign=education_for_all_2026&utm_content=launch_video_link</td></tr>
+              <tr><td>WhatsApp</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=whatsapp&utm_medium=messaging&utm_campaign=education_for_all_2026&utm_content=community_broadcast_v1</td></tr>
+              <tr><td>QR code offline</td><td>https://estherbh.github.io/hopetrack/donate.html?utm_source=qr_code&utm_medium=offline&utm_campaign=education_for_all_2026&utm_content=event_poster</td></tr>
             </tbody>
           </table>
         </div>
@@ -378,76 +388,67 @@
     </section>
 
     <section class="section">
-      <div class="section__inner">
-        <div class="section__header">
-          <span class="section__kicker">Builder</span>
-          <h2>UTM Builder</h2>
-        </div>
-        <article class="builder">
+      <div class="container">
+        <div class="builder" data-reveal>
+          <h2>Interactive UTM builder</h2>
+          <p>Enter the source, medium, campaign, and content. The builder produces a ready-to-use link for the HopeTrack donation page.</p>
           <div class="builder-grid">
-            <label>Source
-              <input type="text" id="utm-source" placeholder="facebook">
-            </label>
-            <label>Medium
-              <input type="text" id="utm-medium" placeholder="paid_social">
-            </label>
-            <label>Campaign
-              <input type="text" id="utm-campaign" placeholder="education_for_all_2026">
-            </label>
-            <label>Content
-              <input type="text" id="utm-content" placeholder="hero_banner_v1">
-            </label>
+            <label>Source<input type="text" id="utm-source" placeholder="facebook"></label>
+            <label>Medium<input type="text" id="utm-medium" placeholder="paid_social"></label>
+            <label>Campaign<input type="text" id="utm-campaign" placeholder="education_for_all_2026"></label>
+            <label>Content<input type="text" id="utm-content" placeholder="carousel_v1"></label>
           </div>
           <div class="builder__actions">
-            <button class="btn btn--primary" type="button" id="generate-link">Generate UTM Link</button>
-            <button class="btn btn--secondary" type="button" id="copy-link">Copy Link</button>
+            <button class="button button--accent" type="button" id="generate-link">Generate Link</button>
+            <button class="button" type="button" id="copy-link">Copy to clipboard</button>
           </div>
-          <div class="builder__output" id="utm-output">Your generated URL will appear here.</div>
-        </article>
+          <div class="builder__output" id="utm-output">https://estherbh.github.io/hopetrack/donate.html</div>
+          <div class="builder__feedback" id="utm-feedback" aria-live="polite"></div>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="section__inner">
-        <div class="section__header">
-          <span class="section__kicker">Warnings</span>
-          <h2>Common Mistakes to Avoid</h2>
+      <div class="container">
+        <div class="section__intro" data-reveal>
+          <h2>Common mistakes</h2>
+          <p>These are the naming issues most likely to break reporting consistency.</p>
         </div>
         <div class="warning-grid">
-          <article class="warning-card">
-            <h3>Do not reuse one UTM across channels.</h3>
-            <p>Never use the same UTM for different channels - you will lose attribution clarity.</p>
-          </article>
-          <article class="warning-card">
-            <h3>Do not skip utm_content.</h3>
-            <p>Always use utm_content to distinguish creatives - otherwise A/B testing is impossible.</p>
-          </article>
-          <article class="warning-card">
-            <h3>Do not mix cases.</h3>
-            <p>UTM parameters are case-sensitive in some tools - always use lowercase.</p>
-          </article>
+          <article class="warning-card" data-reveal><h3>Mixing uppercase and lowercase</h3><p><code>Facebook</code> and <code>facebook</code> will split the same source into two values.</p></article>
+          <article class="warning-card" data-reveal><h3>Changing campaign names mid-flight</h3><p>If one team uses <code>education_for_all_2026</code> and another uses <code>edu_for_all</code>, rollup reporting gets muddy.</p></article>
+          <article class="warning-card" data-reveal><h3>Putting whole sentences in content</h3><p>UTM values should stay short, repeatable, and readable in reports.</p></article>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer__inner">
+  <footer class="site-footer">
+    <div class="container">
       <div class="footer__grid">
-        <section>
-          <h2 class="footer__title">HopeTrack International</h2>
-          <p class="footer__text">This document is part of the HopeTrack International Analytics Framework.</p>
+        <section class="footer__column">
+          <h3>HopeTrack International</h3>
+          <p>A fictional nonprofit built to demonstrate serious campaign analytics, donor journey instrumentation, and stakeholder-ready reporting.</p>
         </section>
-        <section>
-          <h2 class="footer__title">Prepared by</h2>
-          <p class="footer__text">[Your Name]</p>
+        <section class="footer__column">
+          <h3>Quick links</h3>
+          <ul class="footer__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
         </section>
-        <section>
-          <h2 class="footer__title">Year</h2>
-          <p class="footer__text">2026</p>
+        <section class="footer__column">
+          <h3>Contact</h3>
+          <ul class="footer__links">
+            <li><a href="mailto:hello@hopetrack.org">hello@hopetrack.org</a></li>
+            <li>Geneva, Switzerland</li>
+            <li>Cote d'Ivoire | Kenya | Bangladesh</li>
+          </ul>
         </section>
       </div>
-      <div class="footer__bottom">This document is part of the HopeTrack International Analytics Framework | Prepared by [Your Name] | 2026</div>
+      <div class="footer__bottom">Copyright 2026 HopeTrack International. Built as a portfolio demonstration for GA4 and campaign measurement.</div>
     </div>
   </footer>
 
@@ -465,52 +466,48 @@
       }
     };
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const baseUrl = 'https://estherbh.github.io/hopetrack/donate.html';
-      const sourceField = document.getElementById('utm-source');
-      const mediumField = document.getElementById('utm-medium');
-      const campaignField = document.getElementById('utm-campaign');
-      const contentField = document.getElementById('utm-content');
-      const output = document.getElementById('utm-output');
-      const generateButton = document.getElementById('generate-link');
-      const copyButton = document.getElementById('copy-link');
-
-      const sanitize = (value) => value.trim().toLowerCase().replace(/\s+/g, '_');
-
-      const buildUrl = () => {
-        const params = new URLSearchParams({
-          utm_source: sanitize(sourceField.value),
-          utm_medium: sanitize(mediumField.value),
-          utm_campaign: sanitize(campaignField.value),
-          utm_content: sanitize(contentField.value)
-        });
-
-        return `${baseUrl}?${params.toString()}`;
-      };
-
-      generateButton.addEventListener('click', () => {
-        output.textContent = buildUrl();
+    const revealItems = document.querySelectorAll('[data-reveal]');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
       });
+    }, { threshold: 0.2 });
+    revealItems.forEach((item) => revealObserver.observe(item));
 
-      copyButton.addEventListener('click', async () => {
-        const valueToCopy = output.textContent;
-        if (!valueToCopy || valueToCopy === 'Your generated URL will appear here.') {
-          return;
-        }
+    const output = document.getElementById('utm-output');
+    const feedback = document.getElementById('utm-feedback');
+    const fields = {
+      source: document.getElementById('utm-source'),
+      medium: document.getElementById('utm-medium'),
+      campaign: document.getElementById('utm-campaign'),
+      content: document.getElementById('utm-content')
+    };
 
-        try {
-          await navigator.clipboard.writeText(valueToCopy);
-          copyButton.textContent = 'Copied';
-          window.setTimeout(() => {
-            copyButton.textContent = 'Copy Link';
-          }, 1400);
-        } catch (error) {
-          copyButton.textContent = 'Copy failed';
-          window.setTimeout(() => {
-            copyButton.textContent = 'Copy Link';
-          }, 1400);
+    const baseUrl = 'https://estherbh.github.io/hopetrack/donate.html';
+
+    const sanitizeValue = (value) => value.trim().toLowerCase().replace(/\s+/g, '_');
+
+    document.getElementById('generate-link').addEventListener('click', () => {
+      const params = new URLSearchParams();
+      Object.entries(fields).forEach(([key, input]) => {
+        const value = sanitizeValue(input.value);
+        if (value) {
+          params.set(`utm_${key}`, value);
         }
       });
+      output.textContent = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+      feedback.textContent = 'Link generated.';
+    });
+
+    document.getElementById('copy-link').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(output.textContent);
+        feedback.textContent = 'Link copied to clipboard.';
+      } catch (error) {
+        feedback.textContent = 'Copy failed. Please copy the link manually.';
+      }
     });
   </script>
 </body>

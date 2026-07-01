@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HopeTrack International's Education for All 2026 campaign homepage featuring impact goals, program highlights, and donation calls to action.">
+  <meta name="description" content="HopeTrack International's Education for All 2026 homepage with campaign impact, program pathways, and tracked engagement journeys.">
   <meta property="og:title" content="HopeTrack International | Education for All 2026">
   <meta property="og:description" content="Support HopeTrack International as it reaches 10,000 children across Cote d'Ivoire, Kenya, and Bangladesh.">
   <title>HopeTrack International | Home</title>
@@ -23,16 +23,19 @@
       --color-secondary: #22a6b3;
       --color-accent: #27ae60;
       --color-accent-dark: #1f8a4c;
-      --color-bg: #f0f4f8;
-      --color-surface: #ffffff;
-      --color-text: #1a1a2e;
-      --color-muted: #636e72;
-      --color-border: rgba(26, 95, 122, 0.14);
-      --color-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-      --color-shadow-hover: 0 8px 40px rgba(0, 0, 0, 0.14);
-      --radius-card: 16px;
-      --radius-pill: 999px;
+      --color-bg: #111111;
+      --color-surface: #171717;
+      --color-surface-2: #1f1f1f;
+      --color-panel: #141414;
+      --color-text: #f4f1ea;
+      --color-muted: #a39c90;
+      --color-border: rgba(255, 255, 255, 0.08);
+      --color-border-strong: rgba(255, 255, 255, 0.16);
+      --color-success-soft: rgba(39, 174, 96, 0.14);
+      --color-shadow: 0 2px 8px rgba(0, 0, 0, 0.24);
       --container: 1180px;
+      --radius-sm: 10px;
+      --radius-md: 12px;
       --space-1: 8px;
       --space-2: 16px;
       --space-3: 24px;
@@ -42,11 +45,10 @@
       --space-7: 64px;
       --space-8: 80px;
       --space-9: 100px;
-      --space-10: 120px;
       --header-height: 84px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
@@ -54,25 +56,26 @@
       font-size: 18px;
       line-height: 1.7;
       color: var(--color-text);
-      background: var(--color-bg);
+      background:
+        radial-gradient(circle at top center, rgba(255, 255, 255, 0.05), transparent 28%),
+        linear-gradient(180deg, #111111 0%, #0d0d0d 100%);
     }
 
-    img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
-    button, input, select {
+    img { display: block; max-width: 100%; }
+    button, input {
       font: inherit;
     }
 
     button {
       border: 0;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
     }
 
-    button:focus-visible,
     a:focus-visible,
-    input:focus-visible,
-    select:focus-visible {
+    button:focus-visible,
+    input:focus-visible {
       outline: 3px solid rgba(39, 174, 96, 0.35);
       outline-offset: 3px;
     }
@@ -80,536 +83,700 @@
     .skip-link {
       position: absolute;
       left: 16px;
-      top: -48px;
+      top: -52px;
       padding: 12px 18px;
-      border-radius: var(--radius-pill);
-      background: var(--color-surface);
-      color: var(--color-text);
-      box-shadow: var(--color-shadow);
+      border-radius: var(--radius-sm);
+      background: #fff;
+      color: #111;
       z-index: 1000;
-      transition: top 0.3s ease;
+      transition: top 0.2s ease;
     }
 
-    .skip-link:focus {
-      top: 16px;
+    .skip-link:focus { top: 16px; }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--container));
+      margin: 0 auto;
     }
 
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      transition: all 0.3s ease;
-    }
-
-    .site-header--transparent {
-      background: transparent;
-    }
-
-    .site-header--solid {
-      background: rgba(255, 255, 255, 0.94);
+      z-index: 50;
+      background: rgba(17, 17, 17, 0.72);
       backdrop-filter: blur(18px);
-      box-shadow: 0 10px 30px rgba(12, 31, 47, 0.08);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, background-color 0.2s ease;
     }
 
-    .header__inner,
-    .section__inner,
-    .footer__inner {
-      width: min(100% - 32px, var(--container));
-      margin: 0 auto;
+    .site-header.is-scrolled {
+      border-color: var(--color-border);
+      background: rgba(17, 17, 17, 0.92);
     }
 
     .header__inner {
       min-height: var(--header-height);
-      display: flex;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
       gap: var(--space-3);
     }
 
     .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       font-family: 'Poppins', sans-serif;
-      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
+      letter-spacing: 0.01em;
+    }
+
+    .logo__mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--color-border-strong);
+      border-radius: 50%;
+      color: var(--color-text);
+      font-size: 0.95rem;
+    }
+
+    .nav {
+      justify-self: center;
+      display: none;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav__link {
+      color: var(--color-muted);
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+
+    .nav__link:hover,
+    .nav__link--active {
+      color: var(--color-text);
+    }
+
+    .header__actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .nav-toggle {
+      width: 46px;
+      height: 46px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.14);
-      color: var(--color-surface);
-    }
-
-    .site-header--solid .nav-toggle {
-      background: rgba(26, 95, 122, 0.08);
-      color: var(--color-primary);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--color-text);
     }
 
     .nav-toggle__bar,
     .nav-toggle__bar::before,
     .nav-toggle__bar::after {
-      display: block;
-      width: 20px;
+      width: 18px;
       height: 2px;
       border-radius: 999px;
+      display: block;
       background: currentColor;
-      transition: all 0.3s ease;
-      content: '';
+      content: "";
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     .nav-toggle__bar::before { transform: translateY(-6px); }
     .nav-toggle__bar::after { transform: translateY(4px); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar { background: transparent; }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar::before { transform: translateY(0) rotate(45deg); }
+    .nav-toggle[aria-expanded="true"] .nav-toggle__bar::after { transform: translateY(-2px) rotate(-45deg); }
 
-    .nav-toggle[aria-expanded="true"] .nav-toggle__bar {
-      background: transparent;
+    .mobile-nav {
+      display: none;
+      padding-bottom: 18px;
     }
 
-    .nav-toggle[aria-expanded="true"] .nav-toggle__bar::before {
-      transform: translateY(0) rotate(45deg);
-    }
+    .mobile-nav.is-open { display: block; }
 
-    .nav-toggle[aria-expanded="true"] .nav-toggle__bar::after {
-      transform: translateY(-2px) rotate(-45deg);
-    }
-
-    .nav {
-      position: absolute;
-      top: calc(100% + 8px);
-      right: 16px;
-      left: 16px;
-      display: grid;
-      gap: 12px;
-      padding: 18px;
+    .mobile-nav__panel {
+      padding: 16px;
       border: 1px solid var(--color-border);
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.98);
-      box-shadow: var(--color-shadow);
-      transform-origin: top;
-      transform: scaleY(0.92);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
+      border-radius: var(--radius-md);
+      background: var(--color-surface);
     }
 
-    .nav--open {
-      transform: scaleY(1);
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .nav__link {
-      font-weight: 600;
+    .mobile-nav__panel a {
+      display: block;
+      padding: 10px 0;
       color: var(--color-muted);
-    }
-
-    .nav__link--active,
-    .nav__link:hover {
-      color: var(--color-primary);
     }
 
     .hero {
-      position: relative;
-      min-height: calc(100vh - var(--header-height));
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at top left, rgba(34, 166, 179, 0.3), transparent 40%),
-        radial-gradient(circle at right center, rgba(39, 174, 96, 0.2), transparent 34%),
-        linear-gradient(135deg, #0d3344 0%, #1a5f7a 38%, #22a6b3 100%);
-      color: var(--color-surface);
-    }
-
-    .hero::after {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.18;
-      content: "";
-    }
-
-    .hero__inner {
-      position: relative;
-      z-index: 1;
-      width: min(100% - 32px, var(--container));
-      margin: 0 auto;
-      display: grid;
-      gap: var(--space-7);
-      padding: var(--space-8) 0;
+      padding: 70px 0 44px;
     }
 
     .hero__content {
-      max-width: 720px;
-      animation: heroFade 0.9s ease forwards;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
     }
 
-    .hero__eyebrow {
+    .hero__chip {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: var(--space-3);
+      margin-bottom: 26px;
       padding: 10px 16px;
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: var(--radius-pill);
-      background: rgba(255,255,255,0.12);
-      font-size: 0.9rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      border: 1px solid var(--color-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--color-text);
+      font-size: 0.96rem;
     }
 
-    h1, h2, h3 {
+    .hero__chip::after {
+      width: 32px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
+      content: "";
+    }
+
+    h1,
+    h2,
+    h3 {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      line-height: 1.1;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
     }
 
     h1 {
-      font-size: clamp(3.5rem, 7vw, 4rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(3.2rem, 9vw, 5.4rem);
+      max-width: 760px;
+      margin: 0 auto;
     }
 
-    h2 {
-      font-size: clamp(2.25rem, 4vw, 2.625rem);
-      letter-spacing: -0.02em;
-    }
+    h2 { font-size: clamp(2.2rem, 5vw, 3rem); }
+    h3 { font-size: 1.25rem; letter-spacing: -0.03em; }
 
     .hero__lead {
-      max-width: 640px;
-      margin-top: var(--space-4);
-      font-size: 1.125rem;
-      color: rgba(255,255,255,0.82);
+      max-width: 760px;
+      margin: 24px auto 0;
+      color: var(--color-muted);
+      font-size: 1.2rem;
     }
 
-    .button-group {
+    .hero__actions {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
-      gap: var(--space-2);
-      margin-top: var(--space-5);
+      gap: 14px;
+      margin-top: 30px;
     }
 
-    .btn {
+    .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 14px 22px;
-      border-radius: var(--radius-pill);
-      font-weight: 700;
-      box-shadow: var(--color-shadow);
-      transition: all 0.3s ease;
+      min-height: 50px;
+      padding: 0 22px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
     }
 
-    .btn:hover {
-      transform: scale(1.02) translateY(-2px);
-      box-shadow: var(--color-shadow-hover);
+    .button--primary {
+      background: #f5f2eb;
+      border-color: #f5f2eb;
+      color: #111111;
     }
 
-    .btn--primary {
+    .button--primary:hover { background: #ffffff; }
+
+    .button--secondary {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--color-text);
+    }
+
+    .button--secondary:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .button--accent {
       background: var(--color-accent);
-      color: var(--color-surface);
+      border-color: var(--color-accent);
+      color: #ffffff;
     }
 
-    .btn--primary:hover {
-      background: var(--color-accent-dark);
+    .hero__workspace {
+      margin-top: 48px;
+      border: 1px solid var(--color-border);
+      border-radius: 18px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #151515 0%, #111111 100%);
+      box-shadow: var(--color-shadow);
     }
 
-    .btn--secondary {
-      border: 1px solid rgba(255,255,255,0.4);
-      background: transparent;
-      color: var(--color-surface);
+    .workspace__topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-muted);
+      font-size: 0.9rem;
     }
 
-    .hero__panel {
+    .workspace__dots {
+      display: inline-flex;
+      gap: 8px;
+    }
+
+    .workspace__dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+    }
+
+    .workspace__body {
       display: grid;
-      gap: var(--space-3);
-      align-self: end;
-      padding: var(--space-4);
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.12);
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: 0 20px 60px rgba(8, 26, 39, 0.18);
-      backdrop-filter: blur(20px);
+      min-height: 480px;
     }
 
-    .hero__panel-grid {
-      display: grid;
-      gap: var(--space-3);
+    .workspace__sidebar {
+      display: none;
+      padding: 18px;
+      border-right: 1px solid var(--color-border);
+      background: #141414;
     }
 
-    .hero__metric strong {
-      display: block;
-      font-family: 'Poppins', sans-serif;
-      font-size: 2rem;
-      margin-bottom: 6px;
+    .workspace__brand {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      color: var(--color-text);
+      font-weight: 600;
     }
 
-    .scroll-indicator {
-      position: absolute;
-      left: 50%;
-      bottom: 28px;
-      transform: translateX(-50%);
+    .workspace__search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-muted);
+      font-size: 0.92rem;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .workspace__nav {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
       display: grid;
       gap: 8px;
-      justify-items: center;
-      color: rgba(255,255,255,0.8);
-      font-size: 0.9rem;
-      animation: bounce 1.8s infinite;
     }
 
-    .scroll-indicator__arrow {
-      width: 18px;
-      height: 18px;
-      border-right: 2px solid currentColor;
-      border-bottom: 2px solid currentColor;
-      transform: rotate(45deg);
-    }
-
-    .section {
-      padding: var(--space-9) 0;
-    }
-
-    .section__header {
-      display: grid;
-      gap: var(--space-2);
-      margin-bottom: var(--space-6);
-    }
-
-    .section__kicker {
-      color: var(--color-secondary);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-
-    .section__description {
-      max-width: 680px;
+    .workspace__nav li,
+    .workspace__favorites li {
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
       color: var(--color-muted);
+      font-size: 0.94rem;
+      background: transparent;
     }
 
-    .stats-grid,
-    .news-grid,
-    .footer__grid {
+    .workspace__nav li:first-child {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--color-text);
+    }
+
+    .workspace__section-title {
+      margin: 22px 0 10px;
+      color: var(--color-muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .workspace__favorites {
+      margin: 0;
+      padding: 0;
+      list-style: none;
       display: grid;
-      gap: var(--space-3);
+      gap: 8px;
     }
 
-    .card {
-      padding: var(--space-4);
-      border-radius: var(--radius-card);
+    .workspace__main {
+      padding: 18px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .workspace__toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .workspace__title {
+      display: grid;
+      gap: 4px;
+    }
+
+    .workspace__title strong { font-size: 1.05rem; }
+    .workspace__title span { color: var(--color-muted); font-size: 0.92rem; }
+
+    .workspace__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .workspace__pill,
+    .workspace__button {
+      min-height: 38px;
+      padding: 0 14px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--color-text);
+      font-size: 0.92rem;
+    }
+
+    .workspace__button:last-child {
+      background: #f5f2eb;
+      border-color: #f5f2eb;
+      color: #111111;
+    }
+
+    .workspace__grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .panel {
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
       background: var(--color-surface);
-      border: 1px solid rgba(26, 95, 122, 0.08);
-      box-shadow: var(--color-shadow);
-      transition: all 0.3s ease;
+      overflow: hidden;
     }
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--color-shadow-hover);
+    .panel__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--color-border);
     }
 
-    .card--accent {
-      border-top: 5px solid var(--color-secondary);
+    .panel__header strong { font-size: 1rem; }
+    .panel__header span { color: var(--color-muted); font-size: 0.9rem; }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
     }
 
-    .card__eyebrow {
-      display: inline-flex;
-      margin-bottom: 14px;
-      padding: 6px 10px;
-      border-radius: var(--radius-pill);
-      background: rgba(34, 166, 179, 0.1);
-      color: var(--color-primary);
-      font-size: 0.85rem;
-      font-weight: 700;
+    .table th,
+    .table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--color-border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .table th {
+      color: var(--color-muted);
+      font-weight: 600;
+      font-size: 0.84rem;
       letter-spacing: 0.02em;
     }
 
-    .card__value {
-      display: block;
-      margin-bottom: 10px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.75rem;
-      line-height: 1;
-    }
+    .table tr:last-child td { border-bottom: 0; }
 
-    .card__title {
-      margin-bottom: 12px;
-      font-size: 1.35rem;
-    }
-
-    .card__text {
-      color: var(--color-muted);
-      margin-bottom: 0;
-    }
-
-    .news-card__meta {
-      margin-bottom: 12px;
-      color: var(--color-secondary);
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    .news-card__link {
+    .badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin-top: 16px;
-      color: var(--color-primary);
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(34, 166, 179, 0.12);
+      color: #91dee5;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .badge--success {
+      background: var(--color-success-soft);
+      color: #9fe5b7;
+    }
+
+    .badge--warm {
+      background: rgba(255, 214, 102, 0.12);
+      color: #f0d58d;
+    }
+
+    .metric-grid,
+    .card-grid,
+    .news-grid,
+    .footer__grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .section {
+      padding: var(--space-8) 0;
+    }
+
+    .section__intro {
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+
+    .section__intro p {
+      margin: 14px 0 0;
+      color: var(--color-muted);
+    }
+
+    .metric {
+      padding: 24px;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      background: var(--color-surface);
+    }
+
+    .metric__label {
+      color: var(--color-muted);
+      font-size: 0.92rem;
+    }
+
+    .metric__value {
+      margin-top: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .metric__note {
+      margin-top: 10px;
+      color: var(--color-muted);
+      font-size: 0.92rem;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      background: var(--color-surface);
+    }
+
+    .card p,
+    .news-card p,
+    .footer__column p {
+      margin: 12px 0 0;
+      color: var(--color-muted);
+    }
+
+    .card__kicker,
+    .news-card__meta {
+      color: var(--color-muted);
+      font-size: 0.86rem;
+    }
+
+    .card__icon {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--color-text);
       font-weight: 700;
+      margin-bottom: 16px;
     }
 
-    .fade-in {
+    .brand-strip {
+      padding: 18px 0 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .brand-strip__label {
+      margin: 0 0 18px;
+      text-align: center;
+      color: var(--color-muted);
+      font-size: 0.94rem;
+    }
+
+    .brand-strip__row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .brand-strip__row span {
+      display: grid;
+      place-items: center;
+      min-height: 54px;
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.015);
+      color: #d8d1c5;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .news-card {
+      padding: 24px;
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      background: var(--color-surface);
+    }
+
+    .newsletter {
+      display: grid;
+      gap: 22px;
+      padding: 28px;
+      border: 1px solid var(--color-border);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #171717 0%, #121212 100%);
+    }
+
+    .newsletter__form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .newsletter__input {
+      min-height: 56px;
+      width: 100%;
+      padding: 0 16px;
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--color-text);
+    }
+
+    .newsletter__message {
+      min-height: 24px;
+      color: #9fe5b7;
+      font-size: 0.92rem;
+    }
+
+    .site-footer {
+      padding: 44px 0;
+      border-top: 1px solid var(--color-border);
+      background: #0d0d0d;
+    }
+
+    .footer__column h3 {
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .footer__links {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--color-muted);
+    }
+
+    .footer__bottom {
+      margin-top: 24px;
+      padding-top: 22px;
+      border-top: 1px solid var(--color-border);
+      color: var(--color-muted);
+      font-size: 0.92rem;
+    }
+
+    [data-reveal] {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(18px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
     }
 
-    .fade-in.is-visible {
+    [data-reveal].is-visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .footer {
-      background: #1a1a2e;
-      color: rgba(255,255,255,0.9);
-    }
-
-    .footer__inner {
-      padding: var(--space-8) 0 var(--space-4);
-    }
-
-    .footer__title {
-      margin-bottom: var(--space-2);
-      font-size: 1rem;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .footer__text,
-    .footer__link {
-      color: rgba(255,255,255,0.72);
-    }
-
-    .footer__list {
-      padding: 0;
-      margin: 0;
-      list-style: none;
-      display: grid;
-      gap: 10px;
-    }
-
-    .social-list {
-      display: flex;
-      gap: 12px;
-      padding: 0;
-      list-style: none;
-      margin: 18px 0 0;
-    }
-
-    .social-list a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.08);
-      transition: all 0.3s ease;
-    }
-
-    .social-list a:hover {
-      transform: translateY(-3px);
-      background: rgba(255,255,255,0.14);
-    }
-
-    .footer__bottom {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      padding-top: var(--space-4);
-      margin-top: var(--space-6);
-      border-top: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.56);
-      font-size: 0.95rem;
-    }
-
-    @keyframes heroFade {
-      from { opacity: 0; transform: translateY(32px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, -8px); }
-    }
-
-    @media (min-width: 480px) {
-      .hero__panel-grid,
-      .stats-grid,
-      .news-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
     @media (min-width: 768px) {
-      .nav-toggle { display: none; }
-
-      .nav {
-        position: static;
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        padding: 0;
-        border: 0;
-        background: transparent;
-        box-shadow: none;
-        opacity: 1;
-        pointer-events: auto;
-        transform: none;
-      }
-
-      .site-header--transparent .nav__link {
-        color: rgba(255,255,255,0.84);
-      }
-
-      .site-header--transparent .nav__link--active,
-      .site-header--transparent .nav__link:hover {
-        color: #ffffff;
-      }
-
-      .hero__inner {
-        grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.7fr);
-        align-items: center;
-      }
-
-      .stats-grid {
+      .metric-grid,
+      .card-grid,
+      .news-grid,
+      .footer__grid,
+      .brand-strip__row {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .news-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .newsletter {
+        grid-template-columns: 1.15fr 0.85fr;
+        align-items: end;
       }
 
-      .footer__grid {
-        grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      .newsletter__form {
+        grid-template-columns: 1fr auto;
+        align-items: start;
       }
 
-      .footer__bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+      .newsletter__form .newsletter__message {
+        grid-column: 1 / -1;
       }
     }
 
     @media (min-width: 1024px) {
-      .section {
-        padding: var(--space-10) 0;
+      .nav { display: inline-flex; }
+      .nav-toggle,
+      .mobile-nav { display: none !important; }
+
+      .workspace__body {
+        grid-template-columns: 240px minmax(0, 1fr);
+      }
+
+      .workspace__sidebar { display: block; }
+
+      .workspace__grid {
+        grid-template-columns: 1.5fr 1fr;
+      }
+
+      .card-grid,
+      .news-grid,
+      .footer__grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .brand-strip__row {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
       }
     }
   </style>
@@ -617,182 +784,323 @@
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <header class="site-header site-header--transparent" data-header>
-    <div class="header__inner">
-      <a class="logo" href="index.html">HopeTrack International</a>
-      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" data-nav-toggle>
-        <span class="nav-toggle__bar"></span>
-      </button>
-      <nav class="nav" aria-label="Main navigation" data-nav>
+  <header class="site-header" data-header>
+    <div class="container header__inner">
+      <a class="logo" href="index.html" aria-label="HopeTrack International home">
+        <span class="logo__mark">HT</span>
+        <span>HopeTrack</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
         <a class="nav__link nav__link--active" href="index.html">Home</a>
         <a class="nav__link" href="about.html">About</a>
         <a class="nav__link" href="programs.html">Programs</a>
         <a class="nav__link" href="donate.html">Donate</a>
+        <a class="nav__link" href="utm-framework.html">UTM Framework</a>
       </nav>
+
+      <div class="header__actions">
+        <a class="button button--secondary" href="donate.html">Support Now</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Toggle navigation" data-nav-toggle>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="container mobile-nav" id="mobile-nav" data-mobile-nav>
+      <div class="mobile-nav__panel">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="programs.html">Programs</a>
+        <a href="donate.html">Donate</a>
+        <a href="utm-framework.html">UTM Framework</a>
+      </div>
     </div>
   </header>
 
   <main id="main-content">
-    <!-- ========================================
-         SECTION : Hero
-         Purpose : First impression, primary CTA
-         GA4 events : donate_cta_click, learn_more_click, scroll_depth
-         ======================================== -->
     <section class="hero">
-      <div class="hero__inner">
-        <div class="hero__content">
-          <span class="hero__eyebrow">Education for All 2026</span>
+      <div class="container">
+        <div class="hero__content" data-reveal>
+          <a class="hero__chip" href="utm-framework.html">Education for All 2026 - analytics-ready campaign</a>
           <h1>Education changes everything.</h1>
-          <p class="hero__lead">Help us reach 10,000 children in Cote d'Ivoire, Kenya, and Bangladesh with school access, digital skills, and safe pathways for girls to stay in class.</p>
-          <div class="button-group">
-            <a class="btn btn--primary" href="donate.html" data-event="donate-hero">Donate Now</a>
-            <a class="btn btn--secondary" href="about.html" data-event="learn-more">Learn More</a>
+          <p class="hero__lead">Help us reach 10,000 children across Cote d'Ivoire, Kenya, and Bangladesh with a fundraising experience designed to demonstrate campaign tracking, donor intent, and measurable impact.</p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="donate.html" data-track="donate_cta">Donate Now</a>
+            <a class="button button--secondary" href="#how-it-works" data-track="learn_more">Learn More</a>
           </div>
         </div>
-        <aside class="hero__panel" aria-label="Campaign performance snapshot">
-          <div class="hero__panel-grid">
-            <div class="hero__metric">
-              <strong>$50K</strong>
-              <span>fundraising goal to unlock local school supplies and community teachers.</span>
+
+        <div class="hero__workspace" data-reveal>
+          <div class="workspace__topbar">
+            <div class="workspace__dots" aria-hidden="true">
+              <span></span><span></span><span></span>
             </div>
-            <div class="hero__metric">
-              <strong>200</strong>
-              <span>new monthly members targeted to sustain the campaign beyond launch.</span>
-            </div>
-            <div class="hero__metric">
-              <strong>3</strong>
-              <span>priority countries where HopeTrack is building measurable long-term impact.</span>
+            <span>Campaign intelligence workspace</span>
+          </div>
+
+          <div class="workspace__body">
+            <aside class="workspace__sidebar">
+              <div class="workspace__brand">
+                <span>HopeTrack</span>
+                <span>Q3</span>
+              </div>
+              <div class="workspace__search">Quick Actions - Search the campaign</div>
+              <ul class="workspace__nav">
+                <li>Home</li>
+                <li>Programs</li>
+                <li>Donors</li>
+                <li>Impact notes</li>
+                <li>Reports</li>
+                <li>Automations</li>
+              </ul>
+              <p class="workspace__section-title">Favorites</p>
+              <ul class="workspace__favorites">
+                <li>Education for All</li>
+                <li>Kenya outreach</li>
+                <li>Impact dashboard</li>
+                <li>Newsletter signups</li>
+              </ul>
+            </aside>
+
+            <div class="workspace__main">
+              <div class="workspace__toolbar">
+                <div class="workspace__title">
+                  <strong>Campaign performance overview</strong>
+                  <span>Donation pathways, program interest, and latest supporter intent.</span>
+                </div>
+                <div class="workspace__actions">
+                  <span class="workspace__pill">Live from homepage signals</span>
+                  <button class="workspace__button" type="button">Query Builder</button>
+                  <button class="workspace__button" type="button">Export Snapshot</button>
+                </div>
+              </div>
+
+              <div class="workspace__grid">
+                <section class="panel" aria-labelledby="dashboard-table-title">
+                  <div class="panel__header">
+                    <div>
+                      <strong id="dashboard-table-title">Program support signals</strong>
+                      <span>Where donor attention is trending this week</span>
+                    </div>
+                    <span>2,847 interactions</span>
+                  </div>
+
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Program</th>
+                        <th>Country</th>
+                        <th>Raised</th>
+                        <th>Signal</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Education for All</td>
+                        <td>Cote d'Ivoire</td>
+                        <td>$18,500</td>
+                        <td><span class="badge badge--success">Strong support</span></td>
+                      </tr>
+                      <tr>
+                        <td>Digital Skills Training</td>
+                        <td>Kenya</td>
+                        <td>$12,200</td>
+                        <td><span class="badge">Growing intent</span></td>
+                      </tr>
+                      <tr>
+                        <td>Girls in School Initiative</td>
+                        <td>Bangladesh</td>
+                        <td>$8,900</td>
+                        <td><span class="badge badge--warm">Needs push</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </section>
+
+                <section class="panel" aria-labelledby="activity-title">
+                  <div class="panel__header">
+                    <div>
+                      <strong id="activity-title">Latest activity</strong>
+                      <span>Recent moments across the campaign</span>
+                    </div>
+                  </div>
+
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <strong>Newsletter spike after Kenya story</strong>
+                          <div class="card__kicker">8 minutes ago</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>Hero donate CTA driving high intent</strong>
+                          <div class="card__kicker">11 minutes ago</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>Partner referral traffic picked up</strong>
+                          <div class="card__kicker">26 minutes ago</div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <strong>Bangladesh page engagement lagging</strong>
+                          <div class="card__kicker">1 hour ago</div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </section>
+              </div>
             </div>
           </div>
-        </aside>
-      </div>
-      <a class="scroll-indicator" href="#impact">
-        <span>Scroll</span>
-        <span class="scroll-indicator__arrow" aria-hidden="true"></span>
-      </a>
-    </section>
-
-    <!-- ========================================
-         SECTION : Impact numbers
-         Purpose : Show campaign scale and goals
-         GA4 events : none
-         ======================================== -->
-    <section class="section" id="impact">
-      <div class="section__inner">
-        <div class="section__header fade-in">
-          <span class="section__kicker">Impact Goals</span>
-          <h2>What this campaign is designed to deliver.</h2>
-          <p class="section__description">HopeTrack's 2026 appeal focuses on measurable outcomes that combine reach, sustained giving, and country-level execution capacity.</p>
         </div>
-        <div class="stats-grid">
-          <article class="card card--accent fade-in">
-            <span class="card__eyebrow">Children</span>
-            <strong class="card__value" data-counter="10000">0</strong>
-            <h3 class="card__title">10,000 children targeted</h3>
-            <p class="card__text">Expanding classroom access, learning kits, and after-school support for vulnerable families.</p>
-          </article>
-          <article class="card card--accent fade-in">
-            <span class="card__eyebrow">Countries</span>
-            <strong class="card__value" data-counter="3">0</strong>
-            <h3 class="card__title">3 countries in focus</h3>
-            <p class="card__text">Coordinated delivery across Cote d'Ivoire, Kenya, and Bangladesh with local implementation partners.</p>
-          </article>
-          <article class="card card--accent fade-in">
-            <span class="card__eyebrow">Fundraising</span>
-            <strong class="card__value" data-counter="50000">0</strong>
-            <h3 class="card__title">$50,000 fundraising goal</h3>
-            <p class="card__text">Funding school materials, digital labs, and girl-focused retention initiatives over the next 12 months.</p>
-          </article>
+
+        <div class="brand-strip" data-reveal>
+          <p class="brand-strip__label">Trusted campaign disciplines behind this demo</p>
+          <div class="brand-strip__row" aria-label="Capability highlights">
+            <span>GA4 Tracking</span>
+            <span>UTM Governance</span>
+            <span>Donor Analytics</span>
+            <span>Program Reporting</span>
+            <span>Impact Signals</span>
+            <span>Marketing Ops</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ========================================
-         SECTION : Latest news
-         Purpose : Surface campaign storytelling
-         GA4 events : none
-         ======================================== -->
     <section class="section">
-      <div class="section__inner">
-        <div class="section__header fade-in">
-          <span class="section__kicker">Latest Updates</span>
-          <h2>Stories that make the campaign tangible.</h2>
-          <p class="section__description">Use these updates to connect performance data with the field moments that matter to supporters and partners.</p>
+      <div class="container">
+        <div class="section__intro" data-reveal>
+          <h2>Campaign progress you can actually read at a glance.</h2>
+          <p>This homepage keeps the message public-facing while presenting the campaign like a disciplined digital product. Every CTA, scroll milestone, and signup is ready to be measured.</p>
         </div>
+
+        <div class="metric-grid">
+          <article class="metric" data-reveal>
+            <div class="metric__label">Children targeted</div>
+            <div class="metric__value" data-count="10000">0</div>
+            <div class="metric__note">Across three education programs in 2026.</div>
+          </article>
+          <article class="metric" data-reveal>
+            <div class="metric__label">Countries activated</div>
+            <div class="metric__value" data-count="3">0</div>
+            <div class="metric__note">Cote d'Ivoire, Kenya, and Bangladesh.</div>
+          </article>
+          <article class="metric" data-reveal>
+            <div class="metric__label">Fundraising target</div>
+            <div class="metric__value" data-count="50000">$0</div>
+            <div class="metric__note">Tracked as a donation conversion destination.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how-it-works">
+      <div class="container">
+        <div class="section__intro" data-reveal>
+          <h2>How the donor journey works.</h2>
+          <p>Each step is written for supporters, but structured for analytics review. That is the point of the portfolio exercise: content and measurement should reinforce each other.</p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card" data-reveal>
+            <div class="card__icon">1</div>
+            <h3>Choose a program</h3>
+            <p>Supporters can explore country-specific initiatives and click into the program they care most about.</p>
+          </article>
+          <article class="card" data-reveal>
+            <div class="card__icon">2</div>
+            <h3>Make your donation</h3>
+            <p>The donation page captures amount selection, donor type, and completed form intent through GA4 events.</p>
+          </article>
+          <article class="card" data-reveal>
+            <div class="card__icon">3</div>
+            <h3>Track your impact</h3>
+            <p>Teams can attribute activity with UTM standards and map supporter behavior across the full campaign funnel.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section__intro" data-reveal>
+          <h2>Latest campaign news.</h2>
+          <p>Fresh updates keep the page alive and provide natural interaction points for scroll-depth and CTA engagement.</p>
+        </div>
+
         <div class="news-grid">
-          <article class="card fade-in">
-            <p class="news-card__meta">Field update | Cote d'Ivoire</p>
-            <h3 class="card__title">Local teachers reopen two learning hubs after seasonal flooding.</h3>
-            <p class="card__text">Emergency classroom kits restored safe study spaces within 72 hours for more than 480 children.</p>
-            <a class="news-card__link" href="programs.html">See program focus</a>
+          <article class="news-card" data-reveal>
+            <div class="news-card__meta">June 4, 2026</div>
+            <h3>New community learning hubs open in northern Cote d'Ivoire</h3>
+            <p>Local partners completed the first round of classroom upgrades ahead of the new school term.</p>
           </article>
-          <article class="card fade-in">
-            <p class="news-card__meta">Digital access | Kenya</p>
-            <h3 class="card__title">Mobile-first digital skills labs begin piloting after-school coding sessions.</h3>
-            <p class="card__text">HopeTrack mentors are testing low-bandwidth learning modules built for community centers and shared devices.</p>
-            <a class="news-card__link" href="programs.html">Explore programs</a>
+          <article class="news-card" data-reveal>
+            <div class="news-card__meta">June 16, 2026</div>
+            <h3>Kenya digital skills cohort reaches its first 1,000 learners</h3>
+            <p>Mentors reported strong retention across coding, digital literacy, and small business training tracks.</p>
           </article>
-          <article class="card fade-in">
-            <p class="news-card__meta">Girls' retention | Bangladesh</p>
-            <h3 class="card__title">Community advocates launch attendance outreach for girls at risk of dropping out.</h3>
-            <p class="card__text">Family engagement and safety planning are reducing mid-term drop-off in two partner districts.</p>
-            <a class="news-card__link" href="donate.html">Support the appeal</a>
+          <article class="news-card" data-reveal>
+            <div class="news-card__meta">June 28, 2026</div>
+            <h3>Bangladesh girls' scholarship drive adds 220 new supporters</h3>
+            <p>A regional appeal increased awareness around dropout prevention and family engagement support.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="newsletter" data-reveal>
+          <div>
+            <h2>Stay close to the campaign.</h2>
+            <p>Subscribe for milestone updates, program stories, and fundraising momentum. This interaction also acts as a clear top-of-funnel signup event for GA4 review.</p>
+          </div>
+
+          <form class="newsletter__form" data-newsletter-form novalidate>
+            <label class="visually-hidden" for="newsletter-email">Email address</label>
+            <input class="newsletter__input" id="newsletter-email" name="email" type="email" placeholder="Enter your email address" required>
+            <button class="button button--accent" type="submit">Subscribe</button>
+            <div class="newsletter__message" data-newsletter-message aria-live="polite"></div>
+          </form>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ========================================
-       SECTION : Footer
-       Purpose : Close the experience with action paths
-       GA4 events : none
-       ======================================== -->
-  <footer class="footer">
-    <div class="footer__inner">
+  <footer class="site-footer">
+    <div class="container">
       <div class="footer__grid">
-        <section>
-          <h2 class="footer__title">HopeTrack International</h2>
-          <p class="footer__text">A fictional nonprofit built for analytics portfolio work, focused on education equity and measurable fundraising performance.</p>
-          <ul class="social-list" aria-label="Social links">
-            <li><a href="https://example.com" aria-label="Visit HopeTrack on LinkedIn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.94 8.5H3.56V20h3.38V8.5Zm.22-3.56a1.95 1.95 0 1 0-3.9 0 1.95 1.95 0 0 0 3.9 0ZM20.44 13.05c0-3.45-1.84-5.05-4.3-5.05-1.98 0-2.87 1.09-3.37 1.86V8.5H9.38c.04.9 0 11.5 0 11.5h3.39v-6.42c0-.34.02-.68.13-.92.27-.68.89-1.39 1.93-1.39 1.36 0 1.9 1.03 1.9 2.55V20h3.39v-6.95Z" fill="currentColor"/></svg>
-            </a></li>
-            <li><a href="https://example.com" aria-label="Visit HopeTrack on YouTube">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21.58 7.2a2.96 2.96 0 0 0-2.08-2.1C17.66 4.6 12 4.6 12 4.6s-5.65 0-7.5.5A2.96 2.96 0 0 0 2.42 7.2 31.5 31.5 0 0 0 2 12a31.5 31.5 0 0 0 .42 4.8 2.96 2.96 0 0 0 2.08 2.1c1.85.5 7.5.5 7.5.5s5.66 0 7.5-.5a2.96 2.96 0 0 0 2.08-2.1c.28-1.57.42-3.18.42-4.8s-.14-3.23-.42-4.8ZM10.2 15.25V8.75L15.82 12l-5.62 3.25Z" fill="currentColor"/></svg>
-            </a></li>
+        <section class="footer__column">
+          <h3>HopeTrack International</h3>
+          <p>A fictional nonprofit built to demonstrate serious campaign analytics, donor journey instrumentation, and stakeholder-ready reporting.</p>
+        </section>
+        <section class="footer__column">
+          <h3>Quick links</h3>
+          <ul class="footer__links">
+            <li><a href="about.html">About us</a></li>
+            <li><a href="programs.html">Our programs</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="utm-framework.html">UTM framework</a></li>
           </ul>
         </section>
-        <section>
-          <h2 class="footer__title">Quick Links</h2>
-          <ul class="footer__list">
-            <li><a class="footer__link" href="about.html">About</a></li>
-            <li><a class="footer__link" href="programs.html">Programs</a></li>
-            <li><a class="footer__link" href="donate.html">Donate</a></li>
-            <li><a class="footer__link" href="utm-framework.html">UTM Framework</a></li>
-          </ul>
-        </section>
-        <section>
-          <h2 class="footer__title">Contact</h2>
-          <ul class="footer__list">
-            <li class="footer__text">partnerships@hopetrack.org</li>
-            <li class="footer__text">+41 00 000 2026</li>
-            <li class="footer__text">Geneva, Switzerland</li>
-          </ul>
-        </section>
-        <section>
-          <h2 class="footer__title">Campaign</h2>
-          <ul class="footer__list">
-            <li class="footer__text">Education for All 2026</li>
-            <li class="footer__text">Goal: $50,000</li>
-            <li class="footer__text">Target: 200 new members</li>
+        <section class="footer__column">
+          <h3>Contact</h3>
+          <ul class="footer__links">
+            <li><a href="mailto:hello@hopetrack.org">hello@hopetrack.org</a></li>
+            <li>Geneva, Switzerland</li>
+            <li>Cote d'Ivoire | Kenya | Bangladesh</li>
+            <li>Education for All 2026</li>
           </ul>
         </section>
       </div>
-      <div class="footer__bottom">
-        <span>&copy; 2026 HopeTrack International</span>
-        <span>Prepared as a portfolio analytics experience for GitHub Pages.</span>
-      </div>
+      <div class="footer__bottom">Copyright 2026 HopeTrack International. Built as a portfolio demonstration for GA4 and campaign measurement.</div>
     </div>
   </footer>
 
@@ -810,124 +1118,110 @@
       }
     };
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const siteHeader = document.querySelector('[data-header]');
-      const navToggle = document.querySelector('[data-nav-toggle]');
-      const nav = document.querySelector('[data-nav]');
-      const fadeInElements = document.querySelectorAll('.fade-in');
-      const counterElements = document.querySelectorAll('[data-counter]');
-      const trackedScrollDepths = new Set();
+    const header = document.querySelector('[data-header]');
+    const navToggle = document.querySelector('[data-nav-toggle]');
+    const mobileNav = document.querySelector('[data-mobile-nav]');
+    const revealItems = document.querySelectorAll('[data-reveal]');
+    const counters = document.querySelectorAll('[data-count]');
+    const newsletterForm = document.querySelector('[data-newsletter-form]');
+    const newsletterMessage = document.querySelector('[data-newsletter-message]');
+    const scrollMilestones = new Set();
 
-      const setHeaderState = () => {
-        if (window.scrollY > 36) {
-          siteHeader.classList.add('site-header--solid');
-          siteHeader.classList.remove('site-header--transparent');
-        } else {
-          siteHeader.classList.add('site-header--transparent');
-          siteHeader.classList.remove('site-header--solid');
+    const updateHeader = () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 20);
+    };
+
+    const toggleNav = () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!isOpen));
+      mobileNav.classList.toggle('is-open', !isOpen);
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.2 });
+
+    const animateCounter = (element) => {
+      const target = Number(element.dataset.count);
+      const isCurrency = target >= 1000;
+      const duration = 1400;
+      const start = performance.now();
+
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+        element.textContent = isCurrency ? `$${value.toLocaleString('en-US')}` : value.toLocaleString('en-US');
+        if (progress < 1) {
+          requestAnimationFrame(tick);
         }
       };
 
-      setHeaderState();
-      window.addEventListener('scroll', setHeaderState, { passive: true });
+      requestAnimationFrame(tick);
+    };
 
-      navToggle?.addEventListener('click', () => {
-        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-        navToggle.setAttribute('aria-expanded', String(!isExpanded));
-        nav.classList.toggle('nav--open');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        counterObserver.unobserve(entry.target);
       });
+    }, { threshold: 0.45 });
 
-      nav?.addEventListener('click', (event) => {
-        if (event.target instanceof HTMLAnchorElement && nav.classList.contains('nav--open')) {
-          nav.classList.remove('nav--open');
-          navToggle?.setAttribute('aria-expanded', 'false');
-        }
+    const trackScrollDepth = () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      const progress = (window.scrollY / docHeight) * 100;
+
+      if (progress >= 50 && !scrollMilestones.has('50')) {
+        scrollMilestones.add('50');
+        HopeTrackAnalytics.track('scroll_depth', { depth: '50%', page: 'home' });
+      }
+
+      if (progress >= 90 && !scrollMilestones.has('90')) {
+        scrollMilestones.add('90');
+        HopeTrackAnalytics.track('scroll_depth', { depth: '90%', page: 'home' });
+      }
+    };
+
+    document.querySelector('[data-track="donate_cta"]').addEventListener('click', () => {
+      HopeTrackAnalytics.track('donate_cta_click', {
+        button_location: 'hero',
+        page: 'home'
       });
-
-      const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            fadeObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.18 });
-
-      fadeInElements.forEach((element) => fadeObserver.observe(element));
-
-      const animateCounter = (element) => {
-        const target = Number(element.getAttribute('data-counter'));
-        const duration = 1400;
-        const startTime = performance.now();
-
-        const tick = (currentTime) => {
-          const progress = Math.min((currentTime - startTime) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const value = Math.floor(target * eased);
-          element.textContent = target >= 1000 ? value.toLocaleString('en-US') : String(value);
-
-          if (progress < 1) {
-            requestAnimationFrame(tick);
-          } else if (target === 50000) {
-            element.textContent = '$50,000';
-          }
-        };
-
-        requestAnimationFrame(tick);
-      };
-
-      const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            counterObserver.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.45 });
-
-      counterElements.forEach((element) => counterObserver.observe(element));
-
-      // Track donation CTA clicks to measure top-of-funnel intent from the homepage hero.
-      // High click rate here indicates strong campaign messaging and audience motivation.
-      document.querySelector('[data-event="donate-hero"]')?.addEventListener('click', () => {
-        HopeTrackAnalytics.track('donate_cta_click', {
-          button_location: 'hero',
-          page: 'home'
-        });
-      });
-
-      // Track learn more clicks to understand how many users need additional context
-      // before moving toward a donation or deeper engagement.
-      document.querySelector('[data-event="learn-more"]')?.addEventListener('click', () => {
-        HopeTrackAnalytics.track('learn_more_click', {
-          page: 'home'
-        });
-      });
-
-      const trackScrollDepth = () => {
-        const scrollPosition = window.scrollY + window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const depth = Math.round((scrollPosition / documentHeight) * 100);
-
-        if (depth >= 50 && !trackedScrollDepths.has('50%')) {
-          trackedScrollDepths.add('50%');
-          HopeTrackAnalytics.track('scroll_depth', {
-            depth: '50%',
-            page: 'home'
-          });
-        }
-
-        if (depth >= 90 && !trackedScrollDepths.has('90%')) {
-          trackedScrollDepths.add('90%');
-          HopeTrackAnalytics.track('scroll_depth', {
-            depth: '90%',
-            page: 'home'
-          });
-        }
-      };
-
-      window.addEventListener('scroll', trackScrollDepth, { passive: true });
     });
+
+    document.querySelector('[data-track="learn_more"]').addEventListener('click', () => {
+      HopeTrackAnalytics.track('learn_more_click', { page: 'home' });
+    });
+
+    newsletterForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(newsletterForm);
+      const email = String(formData.get('email') || '').trim();
+
+      if (!email || !email.includes('@')) {
+        newsletterMessage.textContent = 'Please enter a valid email address.';
+        newsletterMessage.style.color = '#f0d58d';
+        return;
+      }
+
+      HopeTrackAnalytics.track('newsletter_signup', { page: 'home' });
+      newsletterMessage.textContent = 'Thanks for subscribing. Campaign updates are on the way.';
+      newsletterMessage.style.color = '#9fe5b7';
+      newsletterForm.reset();
+    });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+    counters.forEach((counter) => counterObserver.observe(counter));
+    navToggle.addEventListener('click', toggleNav);
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    window.addEventListener('scroll', trackScrollDepth, { passive: true });
+    updateHeader();
   </script>
 </body>
 </html>
